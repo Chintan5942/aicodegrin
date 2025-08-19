@@ -140,6 +140,7 @@
         4.8 Outline
         4.9 Radius
 ---------------------------------------*/
+
 /* About Card 1 */
 .about-card-1::before {
     content: "";
@@ -3858,7 +3859,7 @@ small,
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bs-dark-bg-subtle);
+    background: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3871,7 +3872,7 @@ small,
     text-align: center;
 }
 .preloader__img {
-    animation: imageBeat 1s normal;
+    animation: preloaderAnimation 1s normal;
 }
 
 /* Price Card 1 */
@@ -8767,7 +8768,6 @@ small,
 
 /* Total Details Section */
 .stats-row {
-    padding: 40px 0;
     margin: 10px;
     display: flex;
     flex-direction: row;
@@ -8779,9 +8779,10 @@ small,
     border: 1px solid var(--bs-primary);
     border-radius: 10px;
     padding: 20px;
+    background:var(--bs-card-bg);
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease;
+    transition: transform 1s ease;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8789,10 +8790,11 @@ small,
     aspect-ratio: 9/6 auto;
     min-width: 150px;
     max-width: 200px;
+
 }
 
 .stats-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
 .stats-number {
@@ -8862,6 +8864,7 @@ small,
 /* Our Services */
 
 .services-row {
+    width:100%;
     padding: 10px 0;
     display: flex;
     flex-direction: row;
@@ -8874,21 +8877,21 @@ small,
 .service-card {
     border: 1px solid var(--bs-primary);
     border-radius: 10px;
-    padding: 30px;
+    padding: 15px;
     text-align: center;
     transition: transform 0.5s ease;
     flex: 0 0 calc(33.333% - 20px);
     max-width: 300px;
-    aspect-ratio: 9/6 auto;
+    aspect-ratio: 9/6;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
+    background-color: var(--bs-card-bg)
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
 .service-img {
@@ -8904,6 +8907,13 @@ small,
     color: var(--bs-primary-bg-subtle);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+.service-details {
+    padding: 0 15px;
+    font-size: 0.8rem;
+    font-weight: 200;
+    text-align: center;
+    color: var(--bs-light-sub);
 }
 
 /* Responsive adjustments */
@@ -8930,7 +8940,7 @@ small,
     .service-card {
         flex: 0 0 auto;
         width: 80%;
-        max-width: 250px;
+        max-width: 300px;
         margin-bottom: 15px;
     }
 
@@ -8942,16 +8952,22 @@ small,
     .service-name {
         font-size: 0.9rem;
     }
+    .service-details {
+        font-size: 0.6rem;
+    }
 }
 
 @media (max-width: 575.98px) {
     .service-card {
-        width: 90%;
+        width: 100%;
         padding: 15px;
     }
 
     .service-name {
         font-size: 0.8rem;
+    }
+    .service-details {
+        font-size: 0.55rem;
     }
 }
 
@@ -9481,16 +9497,12 @@ small,
         opacity: 0;
     }
 }
-@keyframes imageBeat {
+@keyframes preloaderAnimation {
     0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.7);
+        transform: rotate(0deg);
     }
     100% {
-        transform: scale(1);
-        display: none;
+        transform: rotate(360deg);
     }
 }
 @keyframes scroll {
@@ -10562,9 +10574,11 @@ small,
     --bs-primary: #1A8079;
     --bs-primary-rgb: 26, 128, 121;
     --bs-light: #ebebeb;
+    --bs-light-sub: #dbdbdb;
+    --bs-card-bg:#0f0f0f;
     --bs-body-bg: #0d0e10;
     --bs-primary-bg-subtle: #00ffee;
-    --bs-primary-text-emphasis: #f1edff;
+    --bs-primary-text-emphasis: #d1d1d1;
     --bs-secondary-bg-subtle: #03063a;
     --bs-secondary-text-emphasis: #f6f7fd;
     --bs-danger-bg-subtle: #971837;
@@ -10589,6 +10603,8 @@ small,
     --bs-primary: #1A8079;
     --bs-primary-rgb: 26, 128, 121;
     --bs-light: #ebebeb;
+    --bs-light-sub: #dbdbdb;
+    --bs-card-bg:#0f0f0f;
     --bs-primary-bg-subtle: #00ffee;
     --bs-primary-text-emphasis: #15063F;
     --bs-secondary-bg-subtle: #F6F7FD;

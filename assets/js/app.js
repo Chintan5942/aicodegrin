@@ -1,5 +1,6 @@
 "use strict";
 
+
 document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger, Flip, SplitText, DrawSVGPlugin, ScrollSmoother);
   var body = document.querySelector("body");
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     normalizeScroll: true,
     smoothTouch: 0.1
   });
+
 
   /**
    * Slide Up
@@ -999,6 +1001,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
+    
     function imgFlip() {
       var imgFlip = gsap.utils.toArray(".gsap-img-flip");
       if (!imgFlip.length) return;
@@ -1064,3 +1067,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
