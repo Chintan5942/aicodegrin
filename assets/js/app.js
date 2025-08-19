@@ -156,30 +156,30 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Theme Settings (Dark / Light)
    */
-  // var themeDropdown = document.querySelector(".theme-settings");
-  // var themeDropdownIcon = document.getElementById("themeDropdownIcon");
-  // var savedTheme = localStorage.getItem("theme");
-  // if (savedTheme === "dark") {
-  //   document.documentElement.setAttribute("data-bs-theme", "dark");
-  //   updateThemeIcon("dark");
-  // } else {
-  //   document.documentElement.setAttribute("data-bs-theme", "light");
-  //   updateThemeIcon("light");
-  // }
-  // if (themeDropdown) {
-  //   themeDropdown.addEventListener("click", function (e) {
-  //     var target = e.target.closest("#lightTheme, #darkTheme");
-  //     if (!target) return;
-  //     var theme = target.id === "lightTheme" ? "light" : "dark";
-  //     document.documentElement.setAttribute("data-bs-theme", theme);
-  //     localStorage.setItem("theme", theme);
-  //     updateThemeIcon(theme);
-  //   });
-  // }
-  // function updateThemeIcon(theme) {
-  //   if (!themeDropdownIcon) return;
-  //   themeDropdownIcon.setAttribute("icon", theme === "light" ? "bi:sun" : "bi:moon-stars");
-  // }
+  var themeDropdown = document.querySelector(".theme-settings");
+  var themeDropdownIcon = document.getElementById("themeDropdownIcon");
+  var savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-bs-theme", "dark");
+    updateThemeIcon("dark");
+  } else {
+    document.documentElement.setAttribute("data-bs-theme", "light");
+    updateThemeIcon("light");
+  }
+  if (themeDropdown) {
+    themeDropdown.addEventListener("click", function (e) {
+      var target = e.target.closest("#lightTheme, #darkTheme");
+      if (!target) return;
+      var theme = target.id === "lightTheme" ? "light" : "dark";
+      document.documentElement.setAttribute("data-bs-theme", theme);
+      localStorage.setItem("theme", theme);
+      updateThemeIcon(theme);
+    });
+  }
+  function updateThemeIcon(theme) {
+    if (!themeDropdownIcon) return;
+    themeDropdownIcon.setAttribute("icon", theme === "light" ? "bi:sun" : "bi:moon-stars");
+  }
 
 
     const themeToggle = document.getElementById('themeToggle');
