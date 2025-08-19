@@ -156,30 +156,86 @@ document.addEventListener("DOMContentLoaded", function () {
   /**
    * Theme Settings (Dark / Light)
    */
-  var themeDropdown = document.querySelector(".theme-settings");
-  var themeDropdownIcon = document.getElementById("themeDropdownIcon");
-  var savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.documentElement.setAttribute("data-bs-theme", "dark");
-    updateThemeIcon("dark");
-  } else {
-    document.documentElement.setAttribute("data-bs-theme", "light");
-    updateThemeIcon("light");
-  }
-  if (themeDropdown) {
-    themeDropdown.addEventListener("click", function (e) {
-      var target = e.target.closest("#lightTheme, #darkTheme");
-      if (!target) return;
-      var theme = target.id === "lightTheme" ? "light" : "dark";
-      document.documentElement.setAttribute("data-bs-theme", theme);
-      localStorage.setItem("theme", theme);
-      updateThemeIcon(theme);
+  // var themeDropdown = document.querySelector(".theme-settings");
+  // var themeDropdownIcon = document.getElementById("themeDropdownIcon");
+  // var savedTheme = localStorage.getItem("theme");
+  // if (savedTheme === "dark") {
+  //   document.documentElement.setAttribute("data-bs-theme", "dark");
+  //   updateThemeIcon("dark");
+  // } else {
+  //   document.documentElement.setAttribute("data-bs-theme", "light");
+  //   updateThemeIcon("light");
+  // }
+  // if (themeDropdown) {
+  //   themeDropdown.addEventListener("click", function (e) {
+  //     var target = e.target.closest("#lightTheme, #darkTheme");
+  //     if (!target) return;
+  //     var theme = target.id === "lightTheme" ? "light" : "dark";
+  //     document.documentElement.setAttribute("data-bs-theme", theme);
+  //     localStorage.setItem("theme", theme);
+  //     updateThemeIcon(theme);
+  //   });
+  // }
+  // function updateThemeIcon(theme) {
+  //   if (!themeDropdownIcon) return;
+  //   themeDropdownIcon.setAttribute("icon", theme === "light" ? "bi:sun" : "bi:moon-stars");
+  // }
+
+
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    // Check for saved theme preference or use light as default
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    updateTheme(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const newTheme = document.documentElement.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+        updateTheme(newTheme);
     });
-  }
-  function updateThemeIcon(theme) {
-    if (!themeDropdownIcon) return;
-    themeDropdownIcon.setAttribute("icon", theme === "light" ? "bi:sun" : "bi:moon-stars");
-  }
+
+    function updateTheme(theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+        themeIcon.setAttribute('icon', theme === 'light' ? 'bi:moon-stars' : 'bi:sun');
+        localStorage.setItem('theme', theme);
+    }
+
+
+
+    // Total Details Counter
+
+    const counters = document.querySelectorAll('.stats-number');
+            const speed = 1000;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const increment = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target + '+';
+                        }
+                    };
+                    updateCount();
+                });
+            };
+
+            // Trigger animation when cards are in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.disconnect(); // Run animation only once
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(document.querySelector('.stats-row'));
 
   /**
    * Iterate through each tab group
@@ -563,19 +619,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /**
-   * Preloader
-   */
-  var preloader = document.querySelector(".preloader");
+  // /**
+  //  * Preloader
+  //  */
+  // var preloader = document.querySelector(".preloader");
 
-  // Sync with the page loading process
-  window.addEventListener("load", function () {
-    if (preloader) {
-      setTimeout(function () {
-        preloader.style.display = "none";
-      }, 300);
-    }
-  });
+  // // Sync with the page loading process
+  // window.addEventListener("load", function () {
+  //   if (preloader) {
+  //     setTimeout(function () {
+  //       preloader.style.display = "none";
+  //     }, 300);
+  //   }
+  // });
 
   /**
    * Animation
@@ -990,5 +1046,21 @@ document.addEventListener("DOMContentLoaded", function () {
       hero3();
       textAnimation();
     });
+  });
+});
+
+
+
+// Pre-loader
+
+document.addEventListener("DOMContentLoaded", function () {
+ var preloader = document.querySelector(".preloader");
+  // Sync with the page loading process
+  window.addEventListener("load", function () {
+    if (preloader) {
+      setTimeout(function () {
+        preloader.style.display = "none";
+      }, 300);
+    }
   });
 });
