@@ -20,6 +20,7 @@
 </head>
 
 <body class="bg-black">
+    <div id="customCursor" class="custom-cursor"></div>
     <nav
         class="navbar navbar-expand-lg primary-header primary-header--transparent-light-alt primary-header--fixed primary-header-crossed:top-0">
         <div class="container align-items-lg-center">
@@ -33,52 +34,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar0">
                 <ul class="navbar-nav flex-grow-1 justify-content-center mx-lg-4 mb-2 mb-lg-0">
-                    <li class="nav-item has-sub-menu navigation-0">
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <ul class="navigation-0__menu">
-                            <li class="navigation-0__menu-list">
-                                <a href="index.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-3.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> AI Code Generator </span>
-                                </a>
-                            </li>
-                            <li class="navigation-0__menu-list">
-                                <a href="home-2.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-2.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> AI Chat Support </span>
-                                </a>
-                            </li>
-                            <li class="navigation-0__menu-list">
-                                <a href="home-3.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-1.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> Classic AI </span>
-                                </a>
-                            </li>
-                            <li class="navigation-0__menu-list">
-                                <a href="home-4.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-4.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> AI Image Generator </span>
-                                </a>
-                            </li>
-                            <li class="navigation-0__menu-list">
-                                <a href="home-5.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-5.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> AI Developer Assistant </span>
-                                </a>
-                            </li>
-                            <li class="navigation-0__menu-list">
-                                <a href="home-6.html" class="link navigation-0__menu-link">
-                                    <img src="assets/img/shapes/demo-img-6.png" alt="image"
-                                        class="navigation-0__menu-img">
-                                    <span class="navigation-0__menu-title"> AI Video Generator </span>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="service.html">Services</a>
                     </li>
                     <li class="nav-item has-sub-menu navigation-1">
                         <a class="nav-link" aria-current="page" href="#">Pages</a>
@@ -336,12 +296,15 @@
                         </ul>
                     </li>
                 </ul>
+
+
                 <div class="d-flex align-items-center gap-3 ms-lg-auto">
                     <button class="btn px-4 px-lg-0 fs-20 border-0 align-items-center gap-1 theme-toggle" type="button"
                         id="themeToggle">
                         <iconify-icon id="themeIcon" icon="bi:moon-stars"></iconify-icon>
                     </button>
                 </div>
+
             </div>
         </div>
     </nav>
@@ -392,20 +355,20 @@
                         </div>
                     </div>
                 </div>
-               <div class="section-space-md-y">
-                 <div class="section-space-sm-bottom">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-10 col-lg-9 col-xl-8">
-                                <h2 class="mb-0 text-center text-light overflow-hidden gsap-text-animation"
-                                    data-scroll-trigger="true" data-split-type="lines"> Our
-                                    <span class="text-clip text-clip--primary"> Achievements</span>
-                                </h2>
+                <div class="section-space-md-y">
+                    <div class="section-space-sm-bottom">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-9 col-xl-8">
+                                    <h2 class="mb-0 text-center text-light overflow-hidden gsap-text-animation"
+                                        data-scroll-trigger="true" data-split-type="lines"> Our
+                                        <span class="text-clip text-clip--primary"> Achievements</span>
+                                    </h2>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-            
-                </div>
                     <div class="stats-row">
                         <div class="stats-card">
                             <div class="stats-number" data-target="9">0</div>
@@ -424,7 +387,7 @@
                             <div class="stats-label">Countries Served</div>
                         </div>
                     </div>
-               </div>
+                </div>
                 <svg width="248" height="248" viewBox="0 0 248 248" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="hero-5__line hero-5__line-1">
                     <path d="M3.5 3.5L244.5 244.5" stroke="url(#paint0_linear_10137_4909)" stroke-opacity="0.6"
@@ -524,71 +487,73 @@
                         </div>
                     </div>
                 </div>
-                    <div class="services-row ">
-                        <div class="service-card">
-                            <img src="assets/img/services/graphic-des.png" class="service-img"
-                                alt="Graphic Design Services">
-                            <div class="service-name">Graphic Design Services</div>
-                            <div class="service-details">Creative and impactful designs that elevate your brand identity across digital and print platforms.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/ui-ux.png" class="service-img"
-                                alt="UI/UX Design">
-                            <div class="service-name">UI/UX Design</div>
-                            <div class="service-details">We create user-friendly interfaces that balance aesthetics and functionality.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/custom-dev.png" class="service-img"
-                                alt="Custom Software Development">
-                            <div class="service-name">Custom Software Development</div>
-                            <div class="service-details">Tailored software solutions designed to fit your business
-                                needs, ensuring scalability and efficiency.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/js-dev.png" class="service-img" alt="JS Development">
-                            <div class="service-name">JS Development</div>
-                            <div class="service-details">Building dynamic, fast, and interactive web applications using
-                                modern JavaScript frameworks.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/cms-dev.png" class="service-img" alt="CMS Development">
-                            <div class="service-name">CMS Development</div>
-                            <div class="service-details">Easy-to-manage content solutions with secure, scalable, and
-                                customizable CMS platforms.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/ecommerce-dev.png" class="service-img"
-                                alt="Ecommerce Development">
-                            <div class="service-name">Ecommerce Development</div>
-                            <div class="service-details">End-to-end eCommerce solutions with secure payments, product
-                                management, and user-friendly design.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/mobile-app-dev.png" class="service-img"
-                                alt="Mobile App Development">
-                            <div class="service-name">Mobile App Development</div>
-                            <div class="service-details">Intuitive, high-performing mobile apps for Android and iOS to
-                                engage your customers on the go.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/inventory-dev.png" class="service-img"
-                                alt="Inventory Management">
-                            <div class="service-name">Inventory Management</div>
-                            <div class="service-details">Smart inventory systems to track, manage, and optimize your
-                                stock in real time.</div>
-                        </div>
-                         <div class="service-card">
-                            <img src="assets/img/services/wordpress-dev.png" class="service-img"
-                                alt="WordPress Development">
-                            <div class="service-name">WordPress Development</div>
-                            <div class="service-details">Scalable and user-friendly WordPress websites built for performance and easy management.</div>
-                        </div>
-                        <div class="service-card">
-                            <img src="assets/img/services/blockchain-dev.png" class="service-img"
-                                alt="Blockchain Development">
-                            <div class="service-name">Blockchain Development</div>
-                            <div class="service-details">Secure, transparent, and decentralized blockchain solutions tailored to your business needs.</div>
-                        </div>
+                <div class="services-row ">
+                    <div class="service-card">
+                        <img src="assets/img/services/graphic-des.png" class="service-img"
+                            alt="Graphic Design Services">
+                        <div class="service-name">Graphic Design Services</div>
+                        <div class="service-details">Creative and impactful designs that elevate your brand identity
+                            across digital and print platforms.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/ui-ux.png" class="service-img" alt="UI/UX Design">
+                        <div class="service-name">UI/UX Design</div>
+                        <div class="service-details">We create user-friendly interfaces that balance aesthetics and
+                            functionality.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/custom-dev.png" class="service-img"
+                            alt="Custom Software Development">
+                        <div class="service-name">Custom Software Development</div>
+                        <div class="service-details">Tailored software solutions designed to fit your business
+                            needs, ensuring scalability and efficiency.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/js-dev.png" class="service-img" alt="JS Development">
+                        <div class="service-name">JS Development</div>
+                        <div class="service-details">Building dynamic, fast, and interactive web applications using
+                            modern JavaScript frameworks.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/cms-dev.png" class="service-img" alt="CMS Development">
+                        <div class="service-name">CMS Development</div>
+                        <div class="service-details">Easy-to-manage content solutions with secure, scalable, and
+                            customizable CMS platforms.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/ecommerce-dev.png" class="service-img"
+                            alt="Ecommerce Development">
+                        <div class="service-name">Ecommerce Development</div>
+                        <div class="service-details">End-to-end eCommerce solutions with secure payments, product
+                            management, and user-friendly design.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/mobile-app-dev.png" class="service-img"
+                            alt="Mobile App Development">
+                        <div class="service-name">Mobile App Development</div>
+                        <div class="service-details">Intuitive, high-performing mobile apps for Android and iOS to
+                            engage your customers on the go.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/inventory-dev.png" class="service-img" alt="Inventory Management">
+                        <div class="service-name">Inventory Management</div>
+                        <div class="service-details">Smart inventory systems to track, manage, and optimize your
+                            stock in real time.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/wordpress-dev.png" class="service-img"
+                            alt="WordPress Development">
+                        <div class="service-name">WordPress Development</div>
+                        <div class="service-details">Scalable and user-friendly WordPress websites built for performance
+                            and easy management.</div>
+                    </div>
+                    <div class="service-card">
+                        <img src="assets/img/services/blockchain-dev.png" class="service-img"
+                            alt="Blockchain Development">
+                        <div class="service-name">Blockchain Development</div>
+                        <div class="service-details">Secure, transparent, and decentralized blockchain solutions
+                            tailored to your business needs.</div>
+                    </div>
                 </div>
 
 
@@ -939,24 +904,385 @@
                 </div>
 
                 <!-- Client Review -->
-                <!-- <div class="section-space-lg-y">
-                    <div class="section-space-sm-bottom">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-xxl-8 text-center">
-                                    <h1 class="mb-30 text-light gsap-text-animation pt-30" data-delay="0.75"
-                                        data-split-type="lines"> What Client Say's About <span
-                                            class="text-clip--primary">Our Services</span>
-                                    </h1>
+                <div class="section-space-lg-y">
+
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xxl-8 text-center">
+                                <h1 class="mb-30 text-light gsap-text-animation pt-30" data-delay="0.75"
+                                    data-split-type="lines"> What Client Say's About <span
+                                        class="text-clip--primary">Our Services</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="position-relative z-1 blend-y-end overflow-hidden gsap-fade-in">
+                        <div class="container ">
+                            <div class="col-12 align-self-center">
+                                <div class="testimonial-section-2">
+                                    <div class="row g-4 align-items-center">
+                                        <div class="col-md-4 col-lg-6">
+                                            <div class="scroller-y">
+                                                <ul class="list scroller-y__list gap-4">
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Kiss Dorka
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Product Design & UX
+                                                                        Lead </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-1.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="fw-bold text-heading"> Started using <a href="#"
+                                                                    class="link d-inline-block text-primary">@flowmapp</a>
+                                                                to create some App and WebSite Sitemaps. Really liking
+                                                                it. Easy to use. Good to see that "User Flows" appear to
+                                                                be in the Product Roadmap as well. </p>
+                                                            <ul class="list list-row flex-wrap gap-2">
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uxdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #ux </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #Webdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uidesign
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Outline2Design
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Product Design & UX
+                                                                        Lead </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-2.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading"> The design process of
+                                                                the site has been delayed again? Absolutely not enough
+                                                                time? Burn down deadlines? We recommend an excellent
+                                                                service that facilitates the whole process of splitting.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Tóth Kamilla
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Infogenix </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-3.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading"> This a great tool to
+                                                                create architecture of the website. This is one of the
+                                                                most important and the first steps before launching any
+                                                                product/website. Thanks, guys, for awesome app. </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Soós Annamária
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> AI Hope </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-4.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading">
+                                                                <a href="#"
+                                                                    class="link d-inline-block fw-bold text-primary">@flowmapp</a>
+                                                                ist mein absolutes Lieblingstool zur Website und Blog-
+                                                                Planung. Besonders gut - kostenfreie Nutzung bei einem
+                                                                Projekt.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Veres Panna
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Trello </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-5.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list list-row flex-wrap gap-2 mb-2">
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uxdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #ux </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #Webdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uidesign
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                            <p class="mb-0 fw-bold text-heading">
+                                                                <a href="#"
+                                                                    class="link d-inline-block fw-bold text-primary">@juhseep</a>
+                                                                ist mein absolutes Lieblingstool zur Website und Blog-
+                                                                Planung. Besonders gut - kostenfreie Nutzung bei einem
+                                                                Projekt.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-6">
+                                            <div class="scroller-y" data-direction="bottom">
+                                                <ul class="list scroller-y__list gap-4">
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Kiss Dorka
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Product Design & UX
+                                                                        Lead </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-1.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="fw-bold text-heading"> Started using <a href="#"
+                                                                    class="link d-inline-block text-primary">@flowmapp</a>
+                                                                to create some App and WebSite Sitemaps. Really liking
+                                                                it. Easy to use. Good to see that "User Flows" appear to
+                                                                be in the Product Roadmap as well. </p>
+                                                            <ul class="list list-row flex-wrap gap-2">
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uxdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #ux </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #Webdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uidesign
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Outline2Design
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Product Design & UX
+                                                                        Lead </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-2.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading"> The design process of
+                                                                the site has been delayed again? Absolutely not enough
+                                                                time? Burn down deadlines? We recommend an excellent
+                                                                service that facilitates the whole process of splitting.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Tóth Kamilla
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Infogenix </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-3.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading"> This a great tool to
+                                                                create architecture of the website. This is one of the
+                                                                most important and the first steps before launching any
+                                                                product/website. Thanks, guys, for awesome app. </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Soós Annamária
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> AI Hope </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-4.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mb-0 fw-bold text-heading">
+                                                                <a href="#"
+                                                                    class="link d-inline-block fw-bold text-primary">@flowmapp</a>
+                                                                ist mein absolutes Lieblingstool zur Website und Blog-
+                                                                Planung. Besonders gut - kostenfreie Nutzung bei einem
+                                                                Projekt.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="bg-body rounded p-4 p-md-6 shadow-lg">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center gap-4 mb-3">
+                                                                <div class="flex-grow-1">
+                                                                    <p class="mb-0 fw-bold text-heading"> Veres Panna
+                                                                    </p>
+                                                                    <span class="d-block fs-14"> Trello </span>
+                                                                </div>
+                                                                <div
+                                                                    class="flex-shrink-0 w-12 h-12 rounded-circle d-grid place-content-center">
+                                                                    <img src="assets/img/avatar-5.png" alt="image"
+                                                                        class="w-100 h-100 object-fit-cover">
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list list-row flex-wrap gap-2 mb-2">
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uxdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #ux </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #Webdesign
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    <span class="d-inline-block fs-14"> #uidesign
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                            <p class="mb-0 fw-bold text-heading">
+                                                                <a href="#"
+                                                                    class="link d-inline-block fw-bold text-primary">@juhseep</a>
+                                                                ist mein absolutes Lieblingstool zur Website und Blog-
+                                                                Planung. Besonders gut - kostenfreie Nutzung bei einem
+                                                                Projekt.
+                                                            </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="position-relative z-1 blend-y-end overflow-hidden gsap-fade-in">
-                        <div class="container">
+                </div>
+
+                <!-- Our Team -->
+               
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xxl-8 text-center">
+                                <h1 class="mb-30 text-light gsap-text-animation pt-30" data-delay="0.75"
+                                    data-split-type="lines"> Meet Our <span class="text-clip--primary">Team</span>
+                                </h1>
+                            </div>
                         </div>
                     </div>
-                </div> -->
+
+                    <div class="position-relative z-1 blend-y-end overflow-hidden gsap-fade-in">
+                        <div class="container">
+                            <div style="height:100vh; overflow:hidden;">
+                                <div class="testimonial-section-2 h-100">
+                                   <div class="row h-100">
+                                    <div class="col-3 h-100 p-0">
+                                        <div class="scroller-y h-100" data-direction="top" data-speed="very-slow">
+                                        <ul id="team-col-1" class="list scroller-y__list m-0 p-0"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 h-100 p-0">
+                                        <div class="scroller-y h-100" data-direction="bottom" data-speed="very-slow">
+                                        <ul id="team-col-2" class="list scroller-y__list m-0 p-0"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 h-100 p-0">
+                                        <div class="scroller-y h-100" data-direction="top" data-speed="very-slow">
+                                        <ul id="team-col-3" class="list scroller-y__list m-0 p-0"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 h-100 p-0">
+                                        <div class="scroller-y h-100" data-direction="bottom" data-speed="very-slow">
+                                        <ul id="team-col-4" class="list scroller-y__list m-0 p-0"></ul>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
 
                 <!-- Footer -->
@@ -1162,7 +1488,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <p class="mb-0 text-wing text-light text-opacity-70"> Copyright &copy; <span class="text-primary">Codegrin Technologies</span> | All Rights Reserved
+                                    <p class="mb-0 text-wing text-light text-opacity-70"> Copyright &copy; <span
+                                            class="text-primary">Codegrin Technologies</span> | All Rights Reserved
                                 </div>
                             </div>
                         </div>
@@ -1171,6 +1498,14 @@
                 <!-- Footer End -->
             </div>
         </div>
+
+        <!-- ========== Scroll Right Page To Top Page ========== -->
+        <div id="scrollToTop" class="scroll-to-top">
+            <img src="assets/img/scroll_top.svg" class="scroll-svg" alt="">
+            <text class="scroll-percentage">0%</text>
+        </div>
+        <!-- ========== End Scroll Right Page To Top Page ========== -->
+
         <!-- Scripts -->
         <script src="assets/js/bootstrap.bundle.js"></script>
         <script src="assets/js/iconify.js"></script>
