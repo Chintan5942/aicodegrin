@@ -184,60 +184,60 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    
-    // Check for saved theme preference or use light as default
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    updateTheme(currentTheme);
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
 
-    themeToggle.addEventListener('click', () => {
-        const newTheme = document.documentElement.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
-        updateTheme(newTheme);
+  // Check for saved theme preference or use light as default
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  updateTheme(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const newTheme = document.documentElement.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+    updateTheme(newTheme);
+  });
+
+  function updateTheme(theme) {
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    themeIcon.setAttribute('icon', theme === 'light' ? 'bi:moon-stars' : 'bi:sun');
+    localStorage.setItem('theme', theme);
+  }
+
+
+
+  // Total Details Counter
+
+  const counters = document.querySelectorAll('.stats-number');
+  const speed = 1000;
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target + '+';
+        }
+      };
+      updateCount();
     });
+  };
 
-    function updateTheme(theme) {
-        document.documentElement.setAttribute('data-bs-theme', theme);
-        themeIcon.setAttribute('icon', theme === 'light' ? 'bi:moon-stars' : 'bi:sun');
-        localStorage.setItem('theme', theme);
-    }
+  // Trigger animation when cards are in view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.disconnect(); // Run animation only once
+      }
+    });
+  }, { threshold: 0.5 });
 
-
-
-    // Total Details Counter
-
-    const counters = document.querySelectorAll('.stats-number');
-            const speed = 1000;
-
-            const animateCounters = () => {
-                counters.forEach(counter => {
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText;
-                        const increment = target / speed;
-
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + increment);
-                            setTimeout(updateCount, 10);
-                        } else {
-                            counter.innerText = target + '+';
-                        }
-                    };
-                    updateCount();
-                });
-            };
-
-            // Trigger animation when cards are in view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.disconnect(); // Run animation only once
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            observer.observe(document.querySelector('.stats-row'));
+  observer.observe(document.querySelector('.stats-row'));
 
   /**
    * Iterate through each tab group
@@ -847,56 +847,56 @@ document.addEventListener("DOMContentLoaded", function () {
       var items = gsap.utils.toArray(".gsap-text-animation");
       if (!items.length) return;
       var _loop3 = function _loop3() {
-          var item = items[_i14];
-          var scrollTriggerSupport = item.dataset.scrollTrigger;
-          var animationStart = item.dataset.start || "90%";
-          var animationEnd = item.dataset.end || "25%";
-          var animationStagger = item.dataset.stagger || "0.05";
-          var animationDuration = item.dataset.duration || "1";
-          var animationDelay = item.dataset.delay || "0";
-          var animationY = item.dataset.y || "50";
-          var animationOpacity = item.dataset.opacity || "0";
-          var splitType = item.dataset.splitType || "chars";
-          var scrollMarker = item.dataset.marker || false;
-          var textSplit = new SplitText(item, {
-            type: splitType
-          });
-          var itemsToAnimate;
-          if (splitType === "chars") {
-            itemsToAnimate = textSplit.chars;
-          } else if (splitType === "words") {
-            itemsToAnimate = textSplit.words;
-          } else if (splitType === "lines") {
-            itemsToAnimate = textSplit.lines;
-          } else {
-            console.error("Invalid split type:", splitType);
-            return 0; // continue
+        var item = items[_i14];
+        var scrollTriggerSupport = item.dataset.scrollTrigger;
+        var animationStart = item.dataset.start || "90%";
+        var animationEnd = item.dataset.end || "25%";
+        var animationStagger = item.dataset.stagger || "0.05";
+        var animationDuration = item.dataset.duration || "1";
+        var animationDelay = item.dataset.delay || "0";
+        var animationY = item.dataset.y || "50";
+        var animationOpacity = item.dataset.opacity || "0";
+        var splitType = item.dataset.splitType || "chars";
+        var scrollMarker = item.dataset.marker || false;
+        var textSplit = new SplitText(item, {
+          type: splitType
+        });
+        var itemsToAnimate;
+        if (splitType === "chars") {
+          itemsToAnimate = textSplit.chars;
+        } else if (splitType === "words") {
+          itemsToAnimate = textSplit.words;
+        } else if (splitType === "lines") {
+          itemsToAnimate = textSplit.lines;
+        } else {
+          console.error("Invalid split type:", splitType);
+          return 0; // continue
+        }
+        if (!itemsToAnimate.length) {
+          textSplit.revert();
+          return 0; // continue
+        }
+        var tl = scrollTriggerSupport ? gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "clamp(top ".concat(animationStart, ")"),
+            end: "clamp(bottom ".concat(animationEnd, ")"),
+            markers: scrollMarker,
+            once: true
           }
-          if (!itemsToAnimate.length) {
+        }) : gsap.timeline();
+        tl.from(itemsToAnimate, {
+          opacity: parseFloat(animationOpacity),
+          delay: parseFloat(animationDelay),
+          yPercent: parseFloat(animationY),
+          duration: parseFloat(animationDuration),
+          stagger: parseFloat(animationStagger),
+          ease: "back.out",
+          onComplete: function onComplete() {
             textSplit.revert();
-            return 0; // continue
           }
-          var tl = scrollTriggerSupport ? gsap.timeline({
-            scrollTrigger: {
-              trigger: item,
-              start: "clamp(top ".concat(animationStart, ")"),
-              end: "clamp(bottom ".concat(animationEnd, ")"),
-              markers: scrollMarker,
-              once: true
-            }
-          }) : gsap.timeline();
-          tl.from(itemsToAnimate, {
-            opacity: parseFloat(animationOpacity),
-            delay: parseFloat(animationDelay),
-            yPercent: parseFloat(animationY),
-            duration: parseFloat(animationDuration),
-            stagger: parseFloat(animationStagger),
-            ease: "back.out",
-            onComplete: function onComplete() {
-              textSplit.revert();
-            }
-          });
-        },
+        });
+      },
         _ret;
       for (var _i14 = 0; _i14 < items.length; _i14++) {
         _ret = _loop3();
@@ -1001,7 +1001,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     }
-    
+
     function imgFlip() {
       var imgFlip = gsap.utils.toArray(".gsap-img-flip");
       if (!imgFlip.length) return;
@@ -1057,7 +1057,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Pre-loader
 
 document.addEventListener("DOMContentLoaded", function () {
- var preloader = document.querySelector(".preloader");
+  var preloader = document.querySelector(".preloader");
   // Sync with the page loading process
   window.addEventListener("load", function () {
     if (preloader) {
@@ -1066,6 +1066,121 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     }
   });
+
+
+
+
+  // Scroll
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  const svg = scrollToTopBtn.querySelector('.scroll-svg');
+  const percentageText = scrollToTopBtn.querySelector('.scroll-percentage');
+
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.scrollHeight;
+    const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+    // Update button state with smooth transition
+    if (scrollPosition > 100 && scrollPercentage < 99) {
+      scrollToTopBtn.classList.add('active');
+      svg.style.opacity = 1; // Ensure SVG is fully visible
+      percentageText.style.opacity = 1; // Ensure percentage is fully visible
+      percentageText.textContent = Math.round(scrollPercentage) + '%';
+      // Rotate SVG based on scroll percentage
+      const rotation = (scrollPercentage / 100) * 360;
+      svg.style.transform = `rotate(${rotation}deg)`;
+    } else if (scrollPercentage >= 99 && scrollPercentage <= 100) {
+      // Smoothly hide both SVG and percentage between 99% and 100%
+      const opacity = 1 - ((scrollPercentage - 99) / 1); // Linear fade from 1 to 0
+      const newOpacity = opacity < 0 ? 0 : opacity;
+      svg.style.opacity = newOpacity;
+      percentageText.style.opacity = newOpacity;
+      percentageText.textContent = Math.round(scrollPercentage) + '%';
+      // Rotate SVG even during fade-out
+      const rotation = (scrollPercentage / 100) * 360;
+      svg.style.transform = `rotate(${rotation}deg)`;
+    } else {
+      scrollToTopBtn.classList.remove('active');
+    }
+  });
+
+  scrollToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+
+
+
+  //Custom Cursor
+
+  const customCursor = document.getElementById('customCursor');
+  const hoverElements = document.querySelectorAll('a, [data-cursor-hover]');
+
+  // Move cursor with mouse
+  document.addEventListener('mousemove', function(e) {
+    const x = e.clientX;
+    const y = e.clientY;
+  timeoutId = setTimeout(() => {
+      customCursor.style.left = x + 'px';
+      customCursor.style.top = y + 'px';
+    }, 100);
+  });
+
+  // Add hover class when over links or pointer elements
+  hoverElements.forEach(element => {
+    element.addEventListener('mouseenter', () => {
+      customCursor.classList.add('hover');
+    });
+    element.addEventListener('mouseleave', () => {
+      customCursor.classList.remove('hover');
+    });
+  });
+
+  // Optional: Add hover effect for any element with pointer cursor
+  document.addEventListener('mouseover', function(e) {
+    if (window.getComputedStyle(e.target).cursor === 'pointer') {
+      customCursor.classList.add('hover');
+    }
+  });
+  document.addEventListener('mouseout', function(e) {
+    if (window.getComputedStyle(e.target).cursor === 'pointer') {
+      customCursor.classList.remove('hover');
+    }
+  });
+
+
+  // Teamd animaion
+
+
+// Columns
+const teamFolder = "assets/img/team/";
+const totalImages = 34;
+
+const cols = [
+  document.getElementById("team-col-1"),
+  document.getElementById("team-col-2"),
+  document.getElementById("team-col-3"),
+  document.getElementById("team-col-4"),
+];
+
+for (let i = 1; i <= totalImages; i++) {
+  const li = document.createElement("li");
+  li.style.listStyle = "none";
+  li.style.margin = "0";
+  li.style.padding = "0";
+
+  li.innerHTML = `
+    <img src="${teamFolder}emp (${i}).jpg" 
+         alt="Team ${i}" 
+         style="width:100%; height:auto; display:block; margin:0; padding:0;">
+  `;
+
+  // distribute evenly across 4 columns
+  cols[i % 4].appendChild(li);
+}
+
 });
-
-
