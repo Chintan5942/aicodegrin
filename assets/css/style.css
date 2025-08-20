@@ -162,21 +162,21 @@ body::-webkit-scrollbar-track {
 /* Custom Cursor Circle */
 .custom-cursor {
   position: fixed;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: #fff; 
   border-radius: 50%;
   pointer-events: none; 
   z-index: 9999; 
   mix-blend-mode: difference;
-  transition: transform 0.8s ease, width 0.5s ease, height 0.5s ease;
+  transition: ease-in-out 0.5s ease-in-out, width 0.5s ease, height 0.5s ease;
   transform: translate(-50%, -50%) scale(1); 
 }
 
 /* Scale up when over links or pointer elements */
 .custom-cursor.hover {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 
@@ -9110,6 +9110,107 @@ small,
         position: absolute;
     }
 }
+
+
+/* Corousal Work */
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 1800px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-slider {
+    display: flex;
+    /* This transition is only for the final snap, not the drag */
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    cursor: grab;
+}
+
+.carousel-slider.grabbing {
+    cursor: grabbing;
+}
+
+/* Slide Styling */
+.slide {
+    min-width: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Aspect Ratio 16:9 */
+    aspect-ratio: 16 / 9;
+    user-select: none; /* Prevents text selection during drag */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none; /* Prevents image ghosting on drag */
+}
+
+.slide.active img {
+    transform: scale(1.1);
+}
+
+/* Text Card Styling */
+.text-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 20px 30px;
+
+    transform: translatex(-150%);
+    opacity: 0;
+    transition: transform 0.5s 0.3s ease-out, opacity 0.5s 0.3s ease-out;
+}
+
+.slide.active .text-card {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-name {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.language-tag {
+    font-size: 1rem;
+    font-weight: 400;
+    border: 1px solid var(--bs-primary-bg-subtle);
+    color: #fff;
+    padding: 4px 15px;
+    /* border-radius: 20px; */
+    display: inline-block;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0 10px;
+    transition: ease;
+}
+
 
 /* Portfolio Section */
 .portfolio-section-2 {
