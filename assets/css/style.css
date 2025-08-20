@@ -162,24 +162,28 @@ body::-webkit-scrollbar-track {
 /* Custom Cursor Circle */
 .custom-cursor {
   position: fixed;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: #fff; 
   border-radius: 50%;
   pointer-events: none; 
   z-index: 9999; 
   mix-blend-mode: difference;
-  transition: transform 0.8s ease, width 0.5s ease, height 0.5s ease;
+  transition: ease-in-out 0.5s ease-in-out, width 0.5s ease, height 0.5s ease;
   transform: translate(-50%, -50%) scale(1); 
 }
 
 /* Scale up when over links or pointer elements */
 .custom-cursor.hover {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
-
+@media (max-width: 575.98px) {
+    .custom-cursor{
+        display: none;
+    }
+}
 
 /* About Card 1 */
 .about-card-1::before {
@@ -3479,11 +3483,12 @@ small,
 .logo {
     --logo-height: 6rem;
     height: var(--logo-height);
+    display: flex;
+    justify-content: start;
 }
 
 .logo__img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 50%;
     -o-object-fit: contain;
     object-fit: contain;
 }
@@ -8835,6 +8840,8 @@ small,
 }
 
 .scroll-svg {
+    width: 10vh;
+    height: auto;
     transform-origin: center;
     transition: opacity 0.3s ease, transform 0.6s ease;
 }
@@ -8856,35 +8863,58 @@ small,
 }
 
 
+/* Animación */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float-animation {
+  animation: float 2s ease-in-out infinite;
+}
+
 /* Total Details Section */
 .stats-row {
     margin: 10px;
     display: flex;
     flex-direction: row;
-    gap: 25px;
-    justify-content: center;
+    
+    justify-content: space-evenly;
 }
 
 .stats-card {
-    border: 1px solid var(--bs-primary);
-    border-radius: 10px;
+    border-top: 1px solid var(--bs-primary);
+    border-left: 1px solid var(--bs-primary);
     padding: 20px;
-    background: var(--bs-card-bg);
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 1s ease;
+    transition: transform 0.5s ease;
     width: 100%;
+    height: fit-content;
+    /* background: var(--bs-dark-bg-subtle); */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    aspect-ratio: 9/6 auto;
+    aspect-ratio: 9/6; 
     min-width: 150px;
     max-width: 200px;
+    transition: 0.2s ease-in-out ;
+}
 
+.stats-card:nth-child(even){
+    margin-top: 5%;
 }
 
 .stats-card:hover {
-    transform: translateY(-10px);
+    scale: 1.1;
 }
 
 .stats-number {
@@ -8923,8 +8953,9 @@ small,
 
 @media (max-width: 575.98px) {
     .stats-card {
-        margin: 10px 0;
-        width: 90%;
+        margin: 0 auto;
+        margin-bottom:20px;
+        width: 80%;
     }
 
     .stats-number {
@@ -8934,10 +8965,14 @@ small,
     .stats-label {
         font-size: 0.75rem;
     }
+    .stats-card:nth-child(even){
+        margin-top: 0;
+}
 }
 
 @media (min-width: 1200px) {
     .stats-card {
+        margin: 0 auto;
         max-width: 250px;
     }
 
@@ -8950,6 +8985,70 @@ small,
     }
 }
 
+/* Button */
+
+/* From Uiverse.io by TISEPSE */ 
+.view-btn-link {
+  position: relative;
+  display: inline-block;
+  padding: 5px 30px;
+  border: 2px solid #fefefe;
+  text-transform: uppercase;
+  color: #fefefe;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.view-btn-link::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% - 12px);
+  background-color: black;
+  transition: 0.2s ease;
+  transform: scaleY(1);
+}
+
+.view-btn-link:hover::before {
+  transform: scaleY(0);
+}
+.view-btn-link:hover{
+    border: 2px solid cyan;
+}
+
+.view-btn-link::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: -5px;
+  height: calc(100% + 10px);
+  width: calc(100% - 12px);
+  background-color: black;
+  transition: 0.2s ease-in-out;
+  transform: scaleX(1);
+  transition-delay: 0.2s;
+}
+
+.view-btn-link:hover::after {
+  transform: scaleX(0);
+}
+
+.view-btn-link span {
+  position: relative;
+  z-index: 3;
+}
+
+.view-btn {
+  background-color: none;
+  text-decoration: none;
+  background-color: black;
+  border: none;
+  margin-top: 4%;
+}
+
 
 /* Our Services */
 
@@ -8959,16 +9058,17 @@ small,
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 30px;
     justify-content: center;
 }
 
 
 .service-card {
-    border: 1px solid var(--bs-primary);
-    border-radius: 10px;
+    border: 2px solid black;
+    border-left: 2px solid var(--bs-primary);
+    /* border-radius: 10px; */
     padding: 15px;
-    text-align: center;
+    text-align: start;
     transition: transform 0.5s ease;
     flex: 0 0 calc(33.333% - 20px);
     max-width: 300px;
@@ -8976,17 +9076,20 @@ small,
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    background-color: var(--bs-card-bg)
+    align-items: start;
+    transition: 0.2s ease-in-out ;
+    /* background-color: var(--bs-card-bg) */
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateX(10px);
+    scale: 1.1;
 }
 
 .service-img {
     width: 60px;
     height: 60px;
+    margin-left: 15px;
     object-fit: contain;
     margin-bottom: 15px;
 }
@@ -8994,6 +9097,7 @@ small,
 .service-name {
     font-size: 1rem;
     font-weight: 600;
+    padding: 0 15px;
     color: var(--bs-primary-bg-subtle);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -9003,9 +9107,9 @@ small,
     padding: 0 15px;
     font-size: 0.8rem;
     font-weight: 200;
-    text-align: center;
     color: var(--bs-light-sub);
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 991.98px) {
@@ -9060,7 +9164,7 @@ small,
     }
 
     .service-details {
-        font-size: 0.55rem;
+        font-size: 0.75rem;
     }
 }
 
@@ -9110,6 +9214,120 @@ small,
         position: absolute;
     }
 }
+
+
+/* Corousal Work */
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 1800px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-slider {
+    display: flex;
+    /* This transition is only for the final snap, not the drag */
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    cursor: grab;
+}
+
+.carousel-slider.grabbing {
+    cursor: grabbing;
+}
+
+/* Slide Styling */
+.slide {
+    min-width: 100%;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none;
+}
+
+.slide.active img {
+    transform: scale(1.1);
+}
+
+/* Text Card Styling */
+.text-card {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 30px 50px;
+    transform: translatex(-150%);
+    transition: transform 0.5s 0.3s ease-out, opacity 0.5s 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid var(--bs-primary);
+    border-left:none;
+}
+
+.slide.active .text-card {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-name {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.language-tag {
+    width: fit-content;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 1px solid var(--bs-primary-bg-subtle);
+    color: #fff;
+    padding: 4px 15px;
+    margin-top: 3%;
+    display: inline-block;
+    border-radius: 50px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.1s ease;
+    padding: 10px;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.nav-btn.next-btn:active {
+    transform: translateX(15px);
+    color: var(--bs-primary-bg-subtle);
+}
+.nav-btn.prev-btn:active {
+    transform: translateX(-15px);
+    color: var(--bs-primary-bg-subtle);
+}
+
+
 
 /* Portfolio Section */
 .portfolio-section-2 {

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     smooth: 1.5,
     effects: true,
     normalizeScroll: true,
-    smoothTouch: 0.1
+    smoothTouch: 0.2
   });
 
 
@@ -1183,4 +1183,100 @@ for (let i = 1; i <= totalImages; i++) {
   cols[i % 4].appendChild(li);
 }
 
+
+// Slider
+
+const slider = document.querySelector('.carousel-slider');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // Drag functionality variables
+    let isDragging = true;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+
+    function updateCarousel() {
+        // Use a smooth transition for button clicks and drag release
+        slider.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
+        currentTranslate = currentIndex * -slides[0].offsetWidth;
+        prevTranslate = currentTranslate;
+        slider.style.transform = `translateX(${currentTranslate}px)`;
+        
+        // Update active slide class
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function showPrevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    // --- Drag Logic ---
+    function dragStart(e) {
+        isDragging = true;
+        startPos = getPositionX(e);
+        slider.classList.add('grabbing');
+        // Disable transition during drag for immediate feedback
+        slider.style.transition = 'none';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        const currentPosition = getPositionX(e);
+        const move = currentPosition - startPos;
+        currentTranslate = prevTranslate + move;
+        slider.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function dragEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+
+        // Determine whether to switch slide
+        if (movedBy < -100 && currentIndex < totalSlides - 1) {
+            currentIndex += 1;
+        }
+        if (movedBy > 100 && currentIndex > 0) {
+            currentIndex -= 1;
+        }
+
+        slider.classList.remove('grabbing');
+        updateCarousel(); // Snap to the correct slide
+    }
+
+    function getPositionX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    // Event Listeners for buttons
+    nextBtn.addEventListener('click', showNextSlide);
+    prevBtn.addEventListener('click', showPrevSlide);
+    
+    // Event Listeners for drag
+    slider.addEventListener('mousedown', dragStart);
+    slider.addEventListener('touchstart', dragStart);
+
+    slider.addEventListener('mousemove', drag);
+    slider.addEventListener('touchmove', drag);
+
+    slider.addEventListener('mouseup', dragEnd);
+    slider.addEventListener('mouseleave', dragEnd);
+    slider.addEventListener('touchend', dragEnd);
+    
+    // Initialize
+    updateCarousel();
 });
