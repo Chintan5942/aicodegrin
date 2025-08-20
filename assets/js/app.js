@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     smooth: 1.5,
     effects: true,
     normalizeScroll: true,
-    smoothTouch: 0.1
+    smoothTouch: 0.2
   });
 
 
@@ -1195,7 +1195,7 @@ const slider = document.querySelector('.carousel-slider');
     const totalSlides = slides.length;
 
     // Drag functionality variables
-    let isDragging = false;
+    let isDragging = true;
     let startPos = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
@@ -1203,7 +1203,7 @@ const slider = document.querySelector('.carousel-slider');
 
     function updateCarousel() {
         // Use a smooth transition for button clicks and drag release
-        slider.style.transition = 'transform 0.6s cubic-bezier(0.77, 0, 0.175, 1)';
+        slider.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
         currentTranslate = currentIndex * -slides[0].offsetWidth;
         prevTranslate = currentTranslate;
         slider.style.transform = `translateX(${currentTranslate}px)`;
