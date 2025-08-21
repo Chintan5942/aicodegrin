@@ -1158,7 +1158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Columns
 const teamFolder = "assets/img/team/";
-const totalImages = 34;
+const totalImages = 22;
 
 const cols = [
   document.getElementById("team-col-1"),
@@ -1174,7 +1174,7 @@ for (let i = 1; i <= totalImages; i++) {
   li.style.padding = "0";
 
   li.innerHTML = `
-    <img src="${teamFolder}emp (${i}).jpg" 
+    <img src="${teamFolder}emp (${i}).png" 
          alt="Team ${i}" 
          style="width:100%; height:auto; display:block; margin:0; padding:0;">
   `;
