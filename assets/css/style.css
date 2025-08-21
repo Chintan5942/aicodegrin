@@ -11635,3 +11635,7 @@ small,
 .rounded-end-end-5 {
     border-end-end-radius: 1.25rem;
 }
+
+.service-details-peregraph{
+    text-align: justify;
+}
