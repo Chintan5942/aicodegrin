@@ -4507,6 +4507,9 @@ progress {
         /* rtl: var(--bs-breadcrumb-divider, "/") */
     ;
 }
+.breadcrumb-item.inactive{
+    color: var(--bs-light);
+}
 .breadcrumb-item.active {
     color: var(--bs-breadcrumb-item-active-color);
 }
@@ -7365,9 +7368,9 @@ textarea.form-control.is-invalid {
     color: var(--bs-navbar-active-color);
 }
 .navbar-collapse {
-    flex-grow: 1;
+    /* flex-grow: 1;
     flex-basis: 100%;
-    align-items: center;
+    align-items: center; */
 }
 .navbar-toggler {
     padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);

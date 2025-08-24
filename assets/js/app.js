@@ -94,66 +94,21 @@ document.addEventListener("DOMContentLoaded", function () {
     return slideUp(target, duration);
   };
 
-  /**
-   * Header Crossed
-   */
-  var scrollTimeout;
-  window.addEventListener("scroll", function () {
-    if (!body) return;
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(function () {
-      var primaryHeader = document.querySelector(".primary-header");
-      if (primaryHeader) {
-        var primaryHeaderTop = primaryHeader.offsetHeight / 3;
-        var scrolled = window.scrollY;
-        if (scrolled > primaryHeaderTop) {
-          body.classList.add("primary-header-crossed");
-        } else {
-          body.classList.remove("primary-header-crossed");
-        }
-      }
-    }, 100);
-  });
+  // Header crossed effect
+    window.addEventListener("scroll", function () {
+      const body = document.body;
+      const primaryHeader = document.querySelector(".primary-header");
+      if (!primaryHeader) return;
 
-  /**
-   * Primary Menu
-   */
-  var mdScreen = "(max-width: 991px)";
-  var primaryHeader = document.querySelector(".primary-header");
-  if (primaryHeader) {
-    primaryHeader.addEventListener("click", function (e) {
-      var target = e.target.closest(".has-sub-menu > a, .has-sub-2nd > a");
-      if (!target) return;
-      var isMobile = window.matchMedia(mdScreen).matches;
-      if (isMobile) {
-        e.preventDefault();
-        e.stopPropagation();
-        target.classList.toggle("active");
-        var menuSub = target.nextElementSibling;
-        if (menuSub) {
-          slideToggle(menuSub, 500);
-        }
+      const primaryHeaderTop = primaryHeader.offsetHeight / 3;
+      const scrolled = window.scrollY;
+
+      if (scrolled > primaryHeaderTop) {
+        body.classList.add("primary-header-crossed");
       } else {
-        if (!target.getAttribute("href") || target.getAttribute("href") === "#") {
-          e.preventDefault();
-        }
+        body.classList.remove("primary-header-crossed");
       }
     });
-    window.matchMedia(mdScreen).addEventListener("change", function (e) {
-      var subMenus = primaryHeader.querySelectorAll(".navigation-0__menu, .navigation-1__menu, .navigation-1__sub-menu");
-      if (!subMenus.length) return;
-      for (var i = 0; i < subMenus.length; i++) {
-        var menu = subMenus[i];
-        if (menu.style.display !== "none") {
-          slideUp(menu, 0);
-          var parentLink = menu.previousElementSibling;
-          if (parentLink) {
-            parentLink.classList.remove("active");
-          }
-        }
-      }
-    });
-  }
 
   /**
    * Theme Settings (Dark / Light)
@@ -202,42 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem('theme', theme);
   }
 
-
-
-  // Total Details Counter
-
-  const counters = document.querySelectorAll('.stats-number');
-  const speed = 1000;
-
-  const animateCounters = () => {
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(updateCount, 10);
-        } else {
-          counter.innerText = target + '+';
-        }
-      };
-      updateCount();
-    });
-  };
-
-  // Trigger animation when cards are in view
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounters();
-        observer.disconnect(); // Run animation only once
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(document.querySelector('.stats-row'));
 
   /**
    * Iterate through each tab group
@@ -543,98 +462,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * Orbit Animation
-   */
-  function createOrbitAnimation(orbitContainer) {
-    var planetCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
-    var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "50%";
-    var duration = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 30000;
-    if (!orbitContainer || !orbitContainer.querySelector(".orbit__planet")) return;
-    var orbit = orbitContainer;
-    var radiusInPixels;
-    var calculateRadius = function calculateRadius() {
-      if (typeof radius === "string" && radius.includes("%")) {
-        var percentage = parseFloat(radius) / 100;
-        radiusInPixels = orbit.offsetWidth * percentage;
-      } else {
-        radiusInPixels = parseFloat(radius);
-      }
-    };
-    calculateRadius();
-    orbit.innerHTML = "";
-    for (var _i2 = 0; _i2 < planetCount; _i2++) {
-      var planet = document.createElement("span");
-      planet.classList.add("orbit__planet");
-      orbit.appendChild(planet);
-    }
-    var updatePlanetPositions = function updatePlanetPositions(progress) {
-      var children = orbit.children;
-      for (var _i3 = 0; _i3 < children.length; _i3++) {
-        var _planet = children[_i3];
-        var angle = _i3 * 360 / planetCount + progress * 360;
-        var x = radiusInPixels * Math.cos(angle * Math.PI / 180);
-        var y = radiusInPixels * Math.sin(angle * Math.PI / 180);
-        _planet.style.transform = "translate(".concat(x, "px, ").concat(y, "px) translate(-50%, -50%)");
-      }
-    };
-    var tl = gsap.timeline({
-      repeat: -1
-    });
-    tl.to(orbit, {
-      rotation: 360,
-      duration: duration / 1000,
-      ease: "linear",
-      onUpdate: function onUpdate() {
-        updatePlanetPositions(this.progress());
-      }
-    });
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          tl.play();
-        } else {
-          tl.pause();
-        }
-      });
-    }, {
-      threshold: 0
-    });
-    observer.observe(orbit);
-    return {
-      calculateRadius: calculateRadius,
-      updatePlanetPositions: updatePlanetPositions
-    };
-  }
-  var orbits = document.querySelectorAll(".orbit");
-  var orbitAnimations = [];
-  for (var _i4 = 0; _i4 < orbits.length; _i4++) {
-    orbitAnimations.push(createOrbitAnimation(orbits[_i4], 6, "50%", 30000));
-  }
-  window.addEventListener("resize", function () {
-    for (var _i5 = 0; _i5 < orbitAnimations.length; _i5++) {
-      var animation = orbitAnimations[_i5];
-      if (animation) {
-        animation.calculateRadius();
-        animation.updatePlanetPositions(0);
-      }
-    }
-  });
-
-  // /**
-  //  * Preloader
-  //  */
-  // var preloader = document.querySelector(".preloader");
-
-  // // Sync with the page loading process
-  // window.addEventListener("load", function () {
-  //   if (preloader) {
-  //     setTimeout(function () {
-  //       preloader.style.display = "none";
-  //     }, 300);
-  //   }
-  // });
-
+  
   /**
    * Animation
    */
@@ -1054,11 +882,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Pre-loader
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  //Preloader 
   var preloader = document.querySelector(".preloader");
-  // Sync with the page loading process
   window.addEventListener("load", function () {
     if (preloader) {
       setTimeout(function () {
@@ -1066,8 +894,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     }
   });
-
-
 
 
   // Scroll
@@ -1124,7 +950,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener('mousemove', function(e) {
     const x = e.clientX;
     const y = e.clientY;
-  timeoutId = setTimeout(() => {
+  let timeoutId = setTimeout(() => {
       customCursor.style.left = x + 'px';
       customCursor.style.top = y + 'px';
     }, 100);
@@ -1153,7 +979,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // Teamd animaion
+  // Team animaion
 
 
 // Columns
@@ -1279,4 +1105,129 @@ const slider = document.querySelector('.carousel-slider');
     
     // Initialize
     updateCarousel();
+
+
+
+
+
+// Total Details Counter
+const counters = document.querySelectorAll('.stats-number');
+const speed = 200; // smaller = faster
+
+const animateCounters = () => {
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = Math.ceil(target / speed);
+
+      if (count < target) {
+        counter.innerText = count + increment;
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target + '+'; // ✅ add + only after finish
+      }
+    };
+    updateCount();
+  });
+};
+
+// Trigger animation when stats section is in view
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      observer.disconnect(); // run once
+    }
+  });
+}, { threshold: 0.3 }); // 30% visible is enough
+
+observer.observe(document.querySelector('.stats-row'));
+
+
+/**
+   * Orbit Animation
+   */
+  function createOrbitAnimation(orbitContainer) {
+    var planetCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+    var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "50%";
+    var duration = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 30000;
+    if (!orbitContainer || !orbitContainer.querySelector(".orbit__planet")) return;
+    var orbit = orbitContainer;
+    var radiusInPixels;
+    var calculateRadius = function calculateRadius() {
+      if (typeof radius === "string" && radius.includes("%")) {
+        var percentage = parseFloat(radius) / 100;
+        radiusInPixels = orbit.offsetWidth * percentage;
+      } else {
+        radiusInPixels = parseFloat(radius);
+      }
+    };
+    calculateRadius();
+    orbit.innerHTML = "";
+    for (var _i2 = 0; _i2 < planetCount; _i2++) {
+      var planet = document.createElement("span");
+      planet.classList.add("orbit__planet");
+      orbit.appendChild(planet);
+    }
+    var updatePlanetPositions = function updatePlanetPositions(progress) {
+      var children = orbit.children;
+      for (var _i3 = 0; _i3 < children.length; _i3++) {
+        var _planet = children[_i3];
+        var angle = _i3 * 360 / planetCount + progress * 360;
+        var x = radiusInPixels * Math.cos(angle * Math.PI / 180);
+        var y = radiusInPixels * Math.sin(angle * Math.PI / 180);
+        _planet.style.transform = "translate(".concat(x, "px, ").concat(y, "px) translate(-50%, -50%)");
+      }
+    };
+    var tl = gsap.timeline({
+      repeat: -1
+    });
+    tl.to(orbit, {
+      rotation: 360,
+      duration: duration / 1000,
+      ease: "linear",
+      onUpdate: function onUpdate() {
+        updatePlanetPositions(this.progress());
+      }
+    });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          tl.play();
+        } else {
+          tl.pause();
+        }
+      });
+    }, {
+      threshold: 0
+    });
+    observer.observe(orbit);
+    return {
+      calculateRadius: calculateRadius,
+      updatePlanetPositions: updatePlanetPositions
+    };
+  }
+ try {
+  var orbits = document.querySelectorAll(".orbit");
+  var orbitAnimations = [];
+  for (var i = 0; i < orbits.length; i++) {
+    orbitAnimations.push(createOrbitAnimation(orbits[i], 6, "50%", 30000));
+  }
+} catch(e) {
+  console.error("Orbit animation init failed:", e);
+}
+
+  window.addEventListener("resize", function () {
+    for (var _i5 = 0; _i5 < orbitAnimations.length; _i5++) {
+      var animation = orbitAnimations[_i5];
+      if (animation) {
+        animation.calculateRadius();
+        animation.updatePlanetPositions(0);
+      }
+    }
+  });
+
+
+
 });
