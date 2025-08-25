@@ -174,6 +174,7 @@ body::-webkit-scrollbar-track {
     transform: translate(-50%, -50%) scale(1);
 }
 
+
 /* Scale up when over links or pointer elements */
 .custom-cursor.hover {
     width: 60px;
@@ -886,6 +887,18 @@ small,
     line-height: 1.715;
 }
 
+.title-bg{
+    width: 100%;
+    display: flex;
+    align-items: end;
+    height: 40vh;
+}
+@media (max-width: 425px) {
+    .title-bg{
+        height: 35vh;
+    }
+}
+
 .banner-1 {
     background-image: url(../img/shapes/banner-grid-shape.png);
     background-color: var(--bs-body-bg);
@@ -899,38 +912,11 @@ small,
     z-index: 1;
 }
 
-.banner-1__content::before {
-    content: "";
-    width: 18.75rem;
-    height: 18.75rem;
-    position: absolute;
-    top: 0;
-    right: 10%;
-    transform: translateY(-25%);
-    background: rgba(var(--bs-white-rgb), 0.1);
-    border: 1px solid rgba(var(--bs-white-rgb), 0.1);
-    border-radius: 50%;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    z-index: -1;
-}
 
 @media (min-width: 1200px) {
     .banner-1__content::before {
         right: 19%;
     }
-}
-
-.banner-1__content::after {
-    content: "";
-    position: absolute;
-    top: 35%;
-    right: 32%;
-    width: 5.625rem;
-    height: 5.625rem;
-    border-radius: 50%;
-    background-color: rgba(var(--bs-primary-rgb), 0.1);
-    z-index: -2;
 }
 
 @media (min-width: 1200px) {
@@ -6642,8 +6628,11 @@ small,
 }
 
 body.primary-header-crossed .primary-header {
-    background: var(--bs-body-bg);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    /* background: var(--bs-body-bg); */
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transform: none;
 }
 
@@ -6691,8 +6680,9 @@ body.primary-header-crossed .primary-header {
     }
 
     .navbar-collapse {
-        background: var(--bs-body-bg);
+        /* background: var(--bs-body-bg); */
         width: 100%;
+        margin-top: 10px;
         padding-top: 10px;
         font-size: medium;
     }
@@ -7974,7 +7964,6 @@ body.primary-header-crossed .primary-header {
 
 /* Button */
 
-/* From Uiverse.io by TISEPSE */
 .view-btn-link {
     position: relative;
     display: inline-block;
@@ -8154,6 +8143,77 @@ body.primary-header-crossed .primary-header {
     .service-details {
         font-size: 0.75rem;
     }
+}
+
+
+
+/* Card Service Custom */
+.card-service-inner{
+    position: relative;
+    display: inline-block;
+    padding: 5px 30px;
+    border: 2px solid #fefefe;
+    background-color: var(--bs-card-bg);
+}
+.card-service-inner::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% - 40px);
+    background-color: black;
+    transition: 0.2s ease;
+    transform: scaleY(1);
+}
+
+.card-service-inner:hover::before {
+    transform: scaleY(0);
+}
+.card-service-inner:hover::after {
+    transform: scaleX(0);
+}
+
+.card-service-inner:hover {
+    border: 2px solid cyan;
+}
+
+.card-service-inner::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: -5px;
+    height: calc(100% + 10px);
+    width: calc(100% - 40px);
+    background-color: black;
+    transition: 0.2s ease;
+    transform: scaleX(1);
+    transition-delay: 0.2s;
+}
+.card-service span {
+    position: relative;
+    z-index: 3;
+}
+.card-service{transition: 0.2s ease;}
+.card-service:hover{
+    transform: scale(1.05);
+}
+
+
+/* Serivce Page */
+
+.card{
+    transition: transform 0.3s ease;
+}
+.card:hover{
+    transform: scale(1.05);
+}
+.service-detail-button{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+.service-detail-button:hover{
+    transform: rotate(-45deg) scale(1.2)
 }
 
 /* Integration Section */
