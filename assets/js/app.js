@@ -2,22 +2,6 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  gsap.registerPlugin(ScrollTrigger, Flip, SplitText, DrawSVGPlugin, ScrollSmoother);
-  var body = document.querySelector("body");
-
-  /**
-   * Initialize ScrollSmoother
-   */
-  ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 1.5,
-    effects: true,
-    normalizeScroll: true,
-    smoothTouch: 0.2
-  });
-
-
   /**
    * Slide Up
    */
@@ -378,69 +362,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * Duplicate Scroller-X Item
-   */
-  var scrollerX = document.querySelectorAll(".scroller-x");
-  function scrollerXDuplication(scroller) {
-    if (scroller.dataset.duplicated === "true") return;
-    var scrollerInner = scroller.querySelector(".scroller-x__list");
-    if (!scrollerInner) return;
-    var scrollerContent = Array.from(scrollerInner.children);
-    if (!scrollerContent.length) return;
-    var fragment = document.createDocumentFragment();
-    scrollerContent.forEach(function (item) {
-      var duplicateItem = item.cloneNode(true);
-      fragment.appendChild(duplicateItem);
-    });
-    scrollerInner.appendChild(fragment);
-    scroller.dataset.duplicated = "true";
-  }
-  scrollerX.forEach(function (scroller) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          scrollerXDuplication(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0
-    });
-    observer.observe(scroller);
-  });
-
-  /**
-   * Duplicate Scroller-Y Item
-   */
-  var scrollerY = document.querySelectorAll(".scroller-y");
-  function scrollerYDuplication(scroller) {
-    if (scroller.dataset.duplicated === "true") return;
-    var scrollerInner = scroller.querySelector(".scroller-y__list");
-    if (!scrollerInner) return;
-    var scrollerContent = Array.from(scrollerInner.children);
-    if (!scrollerContent.length) return;
-    var fragment = document.createDocumentFragment();
-    scrollerContent.forEach(function (item) {
-      var duplicateItem = item.cloneNode(true);
-      fragment.appendChild(duplicateItem);
-    });
-    scrollerInner.appendChild(fragment);
-    scroller.dataset.duplicated = "true";
-  }
-  scrollerY.forEach(function (scroller) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          scrollerYDuplication(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0
-    });
-    observer.observe(scroller);
-  });
+  
+  
 
   /**
    * Case Study Slider
@@ -880,9 +803,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-
-
+// Preloader, Custom Cursor
 document.addEventListener("DOMContentLoaded", function () {
 
   //Preloader 
@@ -942,7 +863,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   //Custom Cursor
-
   const customCursor = document.getElementById('customCursor');
   const hoverElements = document.querySelectorAll('a, [data-cursor-hover]');
 
@@ -977,37 +897,6 @@ document.addEventListener("DOMContentLoaded", function () {
       customCursor.classList.remove('hover');
     }
   });
-
-
-  // Team animaion
-
-
-// Columns
-const teamFolder = "assets/img/team/";
-const totalImages = 22;
-
-const cols = [
-  document.getElementById("team-col-1"),
-  document.getElementById("team-col-2"),
-  document.getElementById("team-col-3"),
-  document.getElementById("team-col-4"),
-];
-
-for (let i = 1; i <= totalImages; i++) {
-  const li = document.createElement("li");
-  li.style.listStyle = "none";
-  li.style.margin = "0";
-  li.style.padding = "0";
-
-  li.innerHTML = `
-    <img src="${teamFolder}emp (${i}).png" 
-         alt="Team ${i}" 
-         style="width:100%; height:auto; display:block; margin:0; padding:0;">
-  `;
-
-  // distribute evenly across 4 columns
-  cols[i % 4].appendChild(li);
-}
 
 
 // Slider
@@ -1231,3 +1120,136 @@ observer.observe(document.querySelector('.stats-row'));
 
 
 });
+
+// Scroller Items Repeatable
+document.addEventListener("DOMContentLoaded",function(){
+  /**
+   * Duplicate Scroller-X Item
+   */
+  var scrollerX = document.querySelectorAll(".scroller-x");
+  function scrollerXDuplication(scroller) {
+    if (scroller.dataset.duplicated === "true") return;
+    var scrollerInner = scroller.querySelector(".scroller-x__list");
+    if (!scrollerInner) return;
+    var scrollerContent = Array.from(scrollerInner.children);
+    if (!scrollerContent.length) return;
+    var fragment = document.createDocumentFragment();
+    scrollerContent.forEach(function (item) {
+      var duplicateItem = item.cloneNode(true);
+      fragment.appendChild(duplicateItem);
+    });
+    scrollerInner.appendChild(fragment);
+    scroller.dataset.duplicated = "true";
+  }
+  scrollerX.forEach(function (scroller) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          scrollerXDuplication(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0
+    });
+    observer.observe(scroller);
+  });
+
+  /**
+   * Duplicate Scroller-Y Item
+   */
+  var scrollerY = document.querySelectorAll(".scroller-y");
+  function scrollerYDuplication(scroller) {
+    if (scroller.dataset.duplicated === "true") return;
+    var scrollerInner = scroller.querySelector(".scroller-y__list");
+    if (!scrollerInner) return;
+    var scrollerContent = Array.from(scrollerInner.children);
+    if (!scrollerContent.length) return;
+    var fragment = document.createDocumentFragment();
+    scrollerContent.forEach(function (item) {
+      var duplicateItem = item.cloneNode(true);
+      fragment.appendChild(duplicateItem);
+    });
+    scrollerInner.appendChild(fragment);
+    scroller.dataset.duplicated = "true";
+  }
+  scrollerY.forEach(function (scroller) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          scrollerYDuplication(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0
+    });
+    observer.observe(scroller);
+  });
+
+});
+
+
+//Scroll Smoother 
+document.addEventListener("DOMContentLoaded",function(){
+  gsap.registerPlugin(ScrollTrigger, Flip, SplitText, DrawSVGPlugin, ScrollSmoother);
+  var body = document.querySelector("body");
+
+  /**
+   * Initialize ScrollSmoother
+   */
+  ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 1.5,
+    effects: true,
+    normalizeScroll: true,
+    smoothTouch: 0.2
+  });
+});
+
+//GSAP Animation
+document.addEventListener("DOMContentLoaded", () => {
+    gsap.from(".breadcrumb", {
+      opacity: 0,
+      y: -20,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+
+    gsap.from(".service-info h3", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out"
+    });
+
+    gsap.from(".service-info img", {
+      opacity: 0,
+      x: 50,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out"
+    });
+
+    gsap.from(".service-details-paragraph, .view-btn", {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      delay: 0.9,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+    
+    gsap.from(".anim-card", {
+      opacity: 0,
+      y: 40,
+      duration: 0.5,
+      delay: 0.3,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+  });
+  

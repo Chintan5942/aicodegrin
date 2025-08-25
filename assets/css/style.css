@@ -890,56 +890,69 @@ small,
 .title-bg{
     width: 100%;
     display: flex;
-    align-items: end;
-    height: 40vh;
+    flex-direction: column;
+    justify-content: end;
+    height: 35vh;
 }
-@media (max-width: 425px) {
+
+@media (max-width: 768px) {
     .title-bg{
-        height: 35vh;
-        justify-content: center;
+        height: 30vh;
+        align-items: center;
     }
     .breadcrumb{
         justify-content: center;
     }
 }
 
-.banner-1 {
-    background-image: url(../img/shapes/banner-grid-shape.png);
-    background-color: var(--bs-body-bg);
-    overflow: hidden;
-}
-
-.banner-1__content {
-    padding-block-start: clamp(6rem, 9vw + 1rem, 11.875rem);
-    padding-block-end: clamp(4.5rem, 6.5vw + 1rem, 8rem);
-    position: relative;
-    z-index: 1;
-}
-
-
-@media (min-width: 1200px) {
-    .banner-1__content::before {
-        right: 19%;
+@media (max-width: 425px) {
+    .title-bg{
+        height: 35vh;
+        align-items: center;
+    }
+    .breadcrumb{
+        justify-content: center;
     }
 }
 
-@media (min-width: 1200px) {
-    .banner-1__content::after {
-        right: 35%;
-    }
-}
-
-.banner-1__froster-svg {
+.service-info{
     width: 100%;
-    height: 100%;
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+    height: auto;
+    padding-top: 5%;
+}
+.service-details-paragraph {
+    text-align: justify;
 }
 
-.banner-1__froster-svg-path {
-    animation: animateFill 20s infinite linear alternate;
+
+@media (max-width: 1200px) {
+.service-info{
+    padding-top: 10%;
 }
+}
+@media (max-width:768px) {
+    .breadcrumb{
+        justify-content: center;
+    }
+    .service-info{
+    text-align: center;
+}
+}
+
+@media (max-width: 425px) {
+   .service-info{
+    padding-top: 15%;
+    text-align: center;
+}
+.service-info h3{
+    text-align: center;
+}
+
+.service-details-paragraph{
+    padding: 0 10px;
+}
+}
+
 
 .banner-2 {
     background-image: url(../img/shapes/banner-grid-shape-2.png);
@@ -6633,7 +6646,7 @@ small,
 
 body.primary-header-crossed .primary-header {
     /* background: var(--bs-body-bg); */
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -8152,6 +8165,16 @@ body.primary-header-crossed .primary-header {
     }
 }
 
+/* Our Team */
+.team-container{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
 
 
 /* Card Service Custom */
@@ -8212,11 +8235,16 @@ body.primary-header-crossed .primary-header {
 .card{
     transition: transform 0.3s ease , 0.3s ease-in-out;
 }
+
 .card:hover{
     border: 1px solid var(--bs-primary-bg-subtle);
     transform: scale(1.05);
 }
+
 .service-detail-button{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
     border: 1px solid rgba(255, 255, 255, 0.3);
     transform: rotate(-45deg);
     transition: transform 0.3s ease;
@@ -8236,7 +8264,19 @@ body.primary-header-crossed .primary-header {
     pointer-events: none;
     opacity: 0.5;
 }
-
+@media (max-width: 425px)
+{
+    .card{
+        text-align: center;
+    }
+    .card img{
+    align-self: center;
+}
+    .service-detail-button{
+        bottom: 3%;
+        right: 2%;
+    }
+}
 /* Map View */
 .map-view {
     width: 100%;
@@ -8468,19 +8508,9 @@ body.primary-header-crossed .primary-header {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    max-width: 1920px;
-    margin-inline: auto;
     position: absolute;
     inset: 0;
     z-index: -1;
-}
-
-.portfolio-section-2__bg-overlay::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(0deg, var(--bs-dark) 0%, rgba(13, 14, 16, 0.59) 35%, var(--bs-dark) 100%);
 }
 
 /* Pricing Section 1 */
@@ -10757,6 +10787,3 @@ body.primary-header-crossed .primary-header {
     border-end-end-radius: 1.25rem;
 }
 
-.service-details-peregraph {
-    text-align: justify;
-}
