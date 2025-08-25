@@ -896,6 +896,10 @@ small,
 @media (max-width: 425px) {
     .title-bg{
         height: 35vh;
+        justify-content: center;
+    }
+    .breadcrumb{
+        justify-content: center;
     }
 }
 
@@ -6651,6 +6655,9 @@ body.primary-header-crossed .primary-header {
     padding: 8px 15px;
     transition: color 0.3s ease;
 }
+.navbar-nav{
+    gap: 15px;
+}
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
@@ -8203,17 +8210,20 @@ body.primary-header-crossed .primary-header {
 /* Serivce Page */
 
 .card{
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease , 0.3s ease-in-out;
 }
 .card:hover{
+    border: 1px solid var(--bs-primary-bg-subtle);
     transform: scale(1.05);
 }
 .service-detail-button{
     border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: rotate(-45deg);
     transition: transform 0.3s ease;
 }
 .service-detail-button:hover{
-    transform: rotate(-45deg) scale(1.2)
+    transform: scale(1.2);
+    transform: none;
 }
 
 /* Integration Section */

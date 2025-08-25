@@ -2202,8 +2202,8 @@
     --bs-gray-700: #495057;
     --bs-gray-800: #343a40;
     --bs-gray-900: #212529;
-    --bs-primary: #6328ff;
-    --bs-secondary: #5C65FF;
+    --bs-primary: #1A8079;
+    --bs-secondary: #00ffee;
     --bs-success: #17C653;
     --bs-info: #00c4fd;
     --bs-warning: #f6b100;
@@ -2517,7 +2517,8 @@ sup {
     top: -0.5em;
 }
 a {
-    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    color: var(--bs-primary);
+    font-weight: 500;
     text-decoration: underline;
 }
 a:hover {
