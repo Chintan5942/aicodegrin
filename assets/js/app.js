@@ -1192,6 +1192,8 @@ document.addEventListener("DOMContentLoaded",function(){
 
 //Scroll Smoother 
 document.addEventListener("DOMContentLoaded",function(){
+
+
   gsap.registerPlugin(ScrollTrigger, Flip, SplitText, DrawSVGPlugin, ScrollSmoother);
   var body = document.querySelector("body");
 
@@ -1214,6 +1216,13 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 0,
       y: -20,
       duration: 0.8,
+      ease: "power2.out"
+    });
+     gsap.from(".title-bg h2", {
+      opacity: 0,
+      x: -30,
+      duration: 1,
+      delay: 0.3,
       ease: "power2.out"
     });
 
@@ -1241,15 +1250,42 @@ document.addEventListener("DOMContentLoaded", () => {
       stagger: 0.2,
       ease: "power2.out"
     });
-    
-    gsap.from(".anim-card", {
+  
+    gsap.from(".animation-lr", {
       opacity: 0,
-      y: 40,
+      x: -30,
       duration: 0.5,
       delay: 0.3,
       stagger: 0.1,
       ease: "power2.out"
     });
 
+    gsap.from(".animation-bt", {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      delay: 0.3,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+    gsap.from(".animation-tb", {
+      opacity: 0,
+      y: -30,
+      duration: 0.5,
+      delay: 0.3,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+     gsap.from(".animation-rl", {
+      opacity: 0,
+      x: 30,
+      duration: 0.5,
+      delay: 0.3,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+
   });
-  
+
