@@ -8268,6 +8268,18 @@ body.primary-header-crossed .primary-header {
     transform: none;
 }
 
+/* course page  */
+
+.course-detail-button{
+     border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+.course-detail-button:hover{
+    transform: scale(1.2);
+    transform: none;
+}
+
 /* Integration Section */
 .integration-section-1::after {
     content: "";
