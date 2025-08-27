@@ -79,20 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Header crossed effect
-    window.addEventListener("scroll", function () {
-      const body = document.body;
-      const primaryHeader = document.querySelector(".primary-header");
-      if (!primaryHeader) return;
+  window.addEventListener("scroll", function () {
+    const body = document.body;
+    const primaryHeader = document.querySelector(".primary-header");
+    if (!primaryHeader) return;
 
-      const primaryHeaderTop = primaryHeader.offsetHeight / 3;
-      const scrolled = window.scrollY;
+    const primaryHeaderTop = primaryHeader.offsetHeight / 3;
+    const scrolled = window.scrollY;
 
-      if (scrolled > primaryHeaderTop) {
-        body.classList.add("primary-header-crossed");
-      } else {
-        body.classList.remove("primary-header-crossed");
-      }
-    });
+    if (scrolled > primaryHeaderTop) {
+      body.classList.add("primary-header-crossed");
+    } else {
+      body.classList.remove("primary-header-crossed");
+    }
+  });
 
   /**
    * Theme Settings (Dark / Light)
@@ -362,8 +362,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  
-  
+
+
 
   /**
    * Case Study Slider
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  
+
   /**
    * Animation
    */
@@ -822,7 +822,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const svg = scrollToTopBtn.querySelector('.scroll-svg');
   const percentageText = scrollToTopBtn.querySelector('.scroll-percentage');
 
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = document.body.scrollHeight;
@@ -852,7 +852,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  scrollToTopBtn.addEventListener('click', function() {
+  scrollToTopBtn.addEventListener('click', function () {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -867,10 +867,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const hoverElements = document.querySelectorAll('a, [data-cursor-hover]');
 
   // Move cursor with mouse
-  document.addEventListener('mousemove', function(e) {
+  document.addEventListener('mousemove', function (e) {
     const x = e.clientX;
     const y = e.clientY;
-  let timeoutId = setTimeout(() => {
+    let timeoutId = setTimeout(() => {
       customCursor.style.left = x + 'px';
       customCursor.style.top = y + 'px';
     }, 100);
@@ -887,156 +887,156 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Optional: Add hover effect for any element with pointer cursor
-  document.addEventListener('mouseover', function(e) {
+  document.addEventListener('mouseover', function (e) {
     if (window.getComputedStyle(e.target).cursor === 'pointer') {
       customCursor.classList.add('hover');
     }
   });
-  document.addEventListener('mouseout', function(e) {
+  document.addEventListener('mouseout', function (e) {
     if (window.getComputedStyle(e.target).cursor === 'pointer') {
       customCursor.classList.remove('hover');
     }
   });
 
 
-// Slider
+  // Slider
 
-const slider = document.querySelector('.carousel-slider');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+  const slider = document.querySelector('.carousel-slider');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
 
-    let currentIndex = 0;
-    const totalSlides = slides.length;
+  let currentIndex = 0;
+  const totalSlides = slides.length;
 
-    // Drag functionality variables
-    let isDragging = true;
-    let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationID = 0;
+  // Drag functionality variables
+  let isDragging = true;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID = 0;
 
-    function updateCarousel() {
-        // Use a smooth transition for button clicks and drag release
-        slider.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
-        currentTranslate = currentIndex * -slides[0].offsetWidth;
-        prevTranslate = currentTranslate;
-        slider.style.transform = `translateX(${currentTranslate}px)`;
-        
-        // Update active slide class
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === currentIndex);
-        });
-    }
+  function updateCarousel() {
+    // Use a smooth transition for button clicks and drag release
+    slider.style.transition = 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
+    currentTranslate = currentIndex * -slides[0].offsetWidth;
+    prevTranslate = currentTranslate;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
 
-    function showNextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateCarousel();
-    }
+    // Update active slide class
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+  }
 
-    function showPrevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-    }
-
-    // --- Drag Logic ---
-    function dragStart(e) {
-        isDragging = true;
-        startPos = getPositionX(e);
-        slider.classList.add('grabbing');
-        // Disable transition during drag for immediate feedback
-        slider.style.transition = 'none';
-    }
-
-    function drag(e) {
-        if (!isDragging) return;
-        const currentPosition = getPositionX(e);
-        const move = currentPosition - startPos;
-        currentTranslate = prevTranslate + move;
-        slider.style.transform = `translateX(${currentTranslate}px)`;
-    }
-
-    function dragEnd(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        const movedBy = currentTranslate - prevTranslate;
-
-        // Determine whether to switch slide
-        if (movedBy < -100 && currentIndex < totalSlides - 1) {
-            currentIndex += 1;
-        }
-        if (movedBy > 100 && currentIndex > 0) {
-            currentIndex -= 1;
-        }
-
-        slider.classList.remove('grabbing');
-        updateCarousel(); // Snap to the correct slide
-    }
-
-    function getPositionX(e) {
-        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-    }
-
-    // Event Listeners for buttons
-    nextBtn.addEventListener('click', showNextSlide);
-    prevBtn.addEventListener('click', showPrevSlide);
-    
-    // Event Listeners for drag
-    slider.addEventListener('mousedown', dragStart);
-    slider.addEventListener('touchstart', dragStart);
-
-    slider.addEventListener('mousemove', drag);
-    slider.addEventListener('touchmove', drag);
-
-    slider.addEventListener('mouseup', dragEnd);
-    slider.addEventListener('mouseleave', dragEnd);
-    slider.addEventListener('touchend', dragEnd);
-    
-    // Initialize
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
+  }
 
+  function showPrevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  }
 
+  // --- Drag Logic ---
+  function dragStart(e) {
+    isDragging = true;
+    startPos = getPositionX(e);
+    slider.classList.add('grabbing');
+    // Disable transition during drag for immediate feedback
+    slider.style.transition = 'none';
+  }
 
+  function drag(e) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(e);
+    const move = currentPosition - startPos;
+    currentTranslate = prevTranslate + move;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+  }
 
+  function dragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    const movedBy = currentTranslate - prevTranslate;
 
-// Total Details Counter
-const counters = document.querySelectorAll('.stats-number');
-const speed = 200; // smaller = faster
-
-const animateCounters = () => {
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const increment = Math.ceil(target / speed);
-
-      if (count < target) {
-        counter.innerText = count + increment;
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target + '+'; // ✅ add + only after finish
-      }
-    };
-    updateCount();
-  });
-};
-
-// Trigger animation when stats section is in view
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounters();
-      observer.disconnect(); // run once
+    // Determine whether to switch slide
+    if (movedBy < -100 && currentIndex < totalSlides - 1) {
+      currentIndex += 1;
     }
-  });
-}, { threshold: 0.3 }); // 30% visible is enough
+    if (movedBy > 100 && currentIndex > 0) {
+      currentIndex -= 1;
+    }
 
-observer.observe(document.querySelector('.stats-row'));
+    slider.classList.remove('grabbing');
+    updateCarousel(); // Snap to the correct slide
+  }
+
+  function getPositionX(e) {
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+  }
+
+  // Event Listeners for buttons
+  nextBtn.addEventListener('click', showNextSlide);
+  prevBtn.addEventListener('click', showPrevSlide);
+
+  // Event Listeners for drag
+  slider.addEventListener('mousedown', dragStart);
+  slider.addEventListener('touchstart', dragStart);
+
+  slider.addEventListener('mousemove', drag);
+  slider.addEventListener('touchmove', drag);
+
+  slider.addEventListener('mouseup', dragEnd);
+  slider.addEventListener('mouseleave', dragEnd);
+  slider.addEventListener('touchend', dragEnd);
+
+  // Initialize
+  updateCarousel();
 
 
-/**
-   * Orbit Animation
-   */
+
+
+
+  // Total Details Counter
+  const counters = document.querySelectorAll('.stats-number');
+  const speed = 200; // smaller = faster
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target + '+'; // ✅ add + only after finish
+        }
+      };
+      updateCount();
+    });
+  };
+
+  // Trigger animation when stats section is in view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.disconnect(); // run once
+      }
+    });
+  }, { threshold: 0.3 }); // 30% visible is enough
+
+  observer.observe(document.querySelector('.stats-row'));
+
+
+  /**
+     * Orbit Animation
+     */
   function createOrbitAnimation(orbitContainer) {
     var planetCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
     var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "50%";
@@ -1097,15 +1097,15 @@ observer.observe(document.querySelector('.stats-row'));
       updatePlanetPositions: updatePlanetPositions
     };
   }
- try {
-  var orbits = document.querySelectorAll(".orbit");
-  var orbitAnimations = [];
-  for (var i = 0; i < orbits.length; i++) {
-    orbitAnimations.push(createOrbitAnimation(orbits[i], 6, "50%", 30000));
+  try {
+    var orbits = document.querySelectorAll(".orbit");
+    var orbitAnimations = [];
+    for (var i = 0; i < orbits.length; i++) {
+      orbitAnimations.push(createOrbitAnimation(orbits[i], 6, "50%", 30000));
+    }
+  } catch (e) {
+    console.error("Orbit animation init failed:", e);
   }
-} catch(e) {
-  console.error("Orbit animation init failed:", e);
-}
 
   window.addEventListener("resize", function () {
     for (var _i5 = 0; _i5 < orbitAnimations.length; _i5++) {
@@ -1122,7 +1122,7 @@ observer.observe(document.querySelector('.stats-row'));
 });
 
 // Scroller Items Repeatable
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
   /**
    * Duplicate Scroller-X Item
    */
@@ -1191,7 +1191,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 //Scroll Smoother 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
 
 
   gsap.registerPlugin(ScrollTrigger, Flip, SplitText, DrawSVGPlugin, ScrollSmoother);
@@ -1212,78 +1212,121 @@ document.addEventListener("DOMContentLoaded",function(){
 
 //GSAP Animation
 document.addEventListener("DOMContentLoaded", () => {
-    gsap.from(".breadcrumb", {
-      opacity: 0,
-      y: -20,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-     gsap.from(".title-bg h2", {
-      opacity: 0,
-      x: -30,
-      duration: 1,
-      delay: 0.3,
-      ease: "power2.out"
-    });
-
-    gsap.from(".service-info h3", {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      delay: 0.3,
-      ease: "power2.out"
-    });
-
-    gsap.from(".service-info img", {
-      opacity: 0,
-      x: 50,
-      duration: 1,
-      delay: 0.3,
-      ease: "power2.out"
-    });
-
-    gsap.from(".service-details-paragraph, .view-btn", {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      delay: 0.9,
-      stagger: 0.2,
-      ease: "power2.out"
-    });
-  
-    gsap.from(".animation-lr", {
-      opacity: 0,
-      x: -30,
-      duration: 0.5,
-      delay: 0.3,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
-
-    gsap.from(".animation-bt", {
-      opacity: 0,
-      y: 30,
-      duration: 0.5,
-      delay: 0.3,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
-    gsap.from(".animation-tb", {
-      opacity: 0,
-      y: -30,
-      duration: 0.5,
-      delay: 0.3,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
-
-     gsap.from(".animation-rl", {
-      opacity: 0,
-      x: 30,
-      duration: 0.5,
-      delay: 0.3,
-      stagger: 0.1,
-      ease: "power2.out"
-    });
+  gsap.from(".breadcrumb", {
+    opacity: 0,
+    y: -20,
+    duration: 0.8,
+    ease: "power2.out"
+  });
+  gsap.from(".title-bg h2", {
+    opacity: 0,
+    x: -30,
+    duration: 1,
+    delay: 0.3,
+    ease: "power2.out"
   });
 
+  gsap.from(".service-info h3", {
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    delay: 0.3,
+    ease: "power2.out"
+  });
+
+  gsap.from(".service-info img", {
+    opacity: 0,
+    x: 50,
+    duration: 1,
+    delay: 0.3,
+    ease: "power2.out"
+  });
+
+  gsap.from(".service-details-paragraph, .view-btn", {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    delay: 0.9,
+    stagger: 0.2,
+    ease: "power2.out"
+  });
+
+  gsap.from(".animation-lr", {
+    opacity: 0,
+    x: -30,
+    duration: 0.5,
+    delay: 0.3,
+    stagger: 0.1,
+    ease: "power2.out"
+  });
+
+  gsap.from(".animation-bt", {
+    opacity: 0,
+    y: 30,
+    duration: 0.5,
+    delay: 0.3,
+    stagger: 0.1,
+    ease: "power2.out"
+  });
+  gsap.from(".animation-tb", {
+    opacity: 0,
+    y: -30,
+    duration: 0.5,
+    delay: 0.3,
+    stagger: 0.1,
+    ease: "power2.out"
+  });
+
+  gsap.from(".animation-rl", {
+    opacity: 0,
+    x: 30,
+    duration: 0.5,
+    delay: 0.3,
+    stagger: 0.1,
+    ease: "power2.out"
+  });
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll(".tt-clipper-inner").forEach((clip) => {
+    gsap.fromTo(clip,
+      { clipPath: "inset(25% round 45px)" }, // start state
+      {
+        clipPath: "inset(0% round 0px)",    // end state
+        ease: "none",
+        scrollTrigger: {
+          trigger: clip,
+          start: "top 100%",   // when image enters viewport
+          end: "bottom 100%",  // until it passes
+          scrub: true,
+          markers: false      // set to true to debug
+        }
+      }
+    );
+  });
+
+  gsap.to(".title-fill", {
+    width: "100%",
+    ease: "power2.inOut",
+    scrollTrigger: {
+      trigger: ".next-project",
+      start: "top 100%%",   // when section reaches middle
+      end: "bottom 100%",
+      scrub: true,           // smooth with scroll
+      onLeave: () => {
+        // redirect when animation done
+        const link = document.querySelector(".next-link").getAttribute("href");
+        window.location.href = link;
+      }
+    }
+  });
+gsap.to(".next-project .bg img", {
+  y: "-20%",
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".next-project",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true
+  }
+});
+});
