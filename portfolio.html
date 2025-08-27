@@ -87,7 +87,6 @@
             <div class="container section-space-md-y">
                 <!-- Filter Bar -->
                 <div class="filter-group">
-                    
                     <label class="filter-option animation-bt">
                         <input type="radio" name="filter" value="*" checked>
                         <span>All</span>
@@ -140,7 +139,7 @@
                 </div>
 
                 <!-- Project Grid -->
-                <div class="project-grid section-space-sm-y row project-grid g-5 animation-tb">
+                <div class="project-grid section-space-sm-y row project-grid g-5">
                     <a href="portfolio-details.html"  class="col-md-6 col-lg-6 project-item nextjs"><img src="assets/img/portfolios-test/1705728498-HAHA_HUB.jpg">
                         <h7>Next.js</h7>
                         <h5>Project 1</h5>
@@ -346,8 +345,15 @@
         $(document).ready(function () {
             var $grid = $('.project-grid').isotope({
                 itemSelector: '.project-item',
-                layoutMode: 'fitRows'
-            });
+                layoutMode: 'fitRows',
+                transitionDuration: '0.5s',
+                hiddenStyle: {
+                    transform: 'scale(0.8)'
+                },
+                visibleStyle: {
+                    transform: 'scale(1)'
+                }
+            })
 
             $('input[name="filter"]').on('change', function () {
                 var filterValue = $(this).val();

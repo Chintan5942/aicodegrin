@@ -1285,7 +1285,5 @@ document.addEventListener("DOMContentLoaded", () => {
       stagger: 0.1,
       ease: "power2.out"
     });
-
-
   });
 
