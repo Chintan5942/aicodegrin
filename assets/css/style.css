@@ -8592,10 +8592,7 @@ body.primary-header-crossed .primary-header {
    
 }
 .project-item{
-     transition: transform 0.3s ease-in-out;
-}
-.project-item:hover{
-    transform: scale(1.025);
+      transition: opacity 0.5s ease-in-out;
 }
 /* Make sure images scale properly */
 .project-item img {
@@ -8603,6 +8600,7 @@ body.primary-header-crossed .primary-header {
   height: auto;
   border-radius: 5px; 
   display: block;
+  transition: transform 0.5s ease;
 }
 
 /* Add spacing below project title */
@@ -8647,6 +8645,156 @@ body.primary-header-crossed .primary-header {
     left: 10%;
 }
 }
+
+/* Portfolio-Parallax Image */
+
+/* Image aligned left & vertically centered */
+.portfolio-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.portfolio-section img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  min-height: 100%;
+  max-width: none;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.portfolio-section h3 {
+  position: relative;   /* instead of absolute */
+  z-index: 2;
+  color: #fff;
+  font-size: 4rem;
+  text-align: center;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;         /* keeps it vertically centered */
+}
+
+/* Black Overlay */
+.portfolio-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.portfolio-section img {
+  z-index: 0;
+}
+
+/* ---------------------------
+   Responsive Adjustments
+---------------------------- */
+@media (max-width: 1200px) {
+  .portfolio-section h3 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .portfolio-section h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-section h3 {
+    font-size: 1.8rem;
+  }
+  .portfolio-section img {
+    transform: translate(-50%, -50%); /* center image for small screens */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 576px) {
+    .portfolio-section img {
+        left: 50%;
+    }
+  .portfolio-section h3 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Second Section (Text) */
+.project-details {
+  background: #000;
+  color: #fff;
+  padding: 80px 20px;
+}
+
+.project-details .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+}
+
+.project-col h3,
+.info-col h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.project-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 3%;
+}
+
+.project-col li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.project-col strong {
+  font-weight: bolder;
+  margin-right: 5px;
+}
+
+.info-col p {
+  margin-bottom: 15px;
+  margin-left: 2%;
+  line-height: 1.6;
+}
+
+.info-col h4 {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: justify;
+  }
+}
+
+
 
 
 /* Pricing Section 1 */
