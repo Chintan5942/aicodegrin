@@ -8279,6 +8279,10 @@ body.primary-header-crossed .primary-header {
     transform: scale(1.2);
     transform: none;
 }
+.course-descriptioin-paregraph{
+    text-align: justify;
+}
+
 
 /* Integration Section */
 .integration-section-1::after {
@@ -8511,6 +8515,15 @@ body.primary-header-crossed .primary-header {
     .blog-card:hover {
         transform: scale(1.025);
     }
+}
+
+@media (max-width: 768px) {
+    .course-card-teb{
+        margin: auto;
+    }
+    .primary-header{
+        padding: 3%;
+    } 
 }
 
 /* Small screens (mobile) */
