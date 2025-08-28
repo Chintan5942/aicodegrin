@@ -11085,3 +11085,15 @@ body.primary-header-crossed .primary-header {
     border-end-end-radius: 1.25rem;
 }
 
+.course-card{
+    background: var(--bs-body-bg);
+    border-radius: 10px;
+    border: 1px solid var(--bs-border-color-translucent);
+    transition: transform 0.3s ease-in-out, 0.3s ease;
+}
+
+@media (max-width: 426px) {
+    .course-details-h3{
+        text-align: center;
+    }
+}
