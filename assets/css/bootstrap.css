@@ -9676,7 +9676,7 @@ textarea.form-control.is-invalid {
     --bs-border-opacity: 1;
     border-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
 }
-.border-success {
+.border-primary {
     --bs-border-opacity: 1;
     border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
 }
@@ -9714,7 +9714,7 @@ textarea.form-control.is-invalid {
 .border-secondary-subtle {
     border-color: var(--bs-secondary-border-subtle) !important;
 }
-.border-success-subtle {
+.border-primary-subtle {
     border-color: var(--bs-success-border-subtle) !important;
 }
 .border-info-subtle {
