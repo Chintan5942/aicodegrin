@@ -1319,14 +1319,57 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-gsap.to(".next-project .bg img", {
-  y: "-20%",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".next-project",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true
-  }
+  gsap.to(".next-project .bg img", {
+    y: "-20%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".next-project",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
 });
+
+
+// Form Control
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const formResult = document.getElementById("formResult");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    formResult.style.display = "block";
+    formResult.className = "";
+    formResult.textContent = "⏳ Please wait...";
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: json
+    })
+      .then(async (response) => {
+        let data = await response.json();
+        console.log(data); // debug response
+
+        if (data.success) {
+          formResult.className = "success";
+          formResult.textContent = "✅ Form submitted successfully!";
+          form.reset();
+        } else {
+          formResult.className = "error";
+          formResult.textContent = "❌ Something Went Wrong!";
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        formResult.className = "warning";
+        formResult.textContent = "⚠️ Something went wrong!";
+      });
+  });
 });
