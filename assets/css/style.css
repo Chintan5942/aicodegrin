@@ -9114,6 +9114,25 @@ body.primary-header-crossed .primary-header {
     }
 
 
+/* Contact us */
+
+@media (max-width:425px) {
+    .contact-details{
+        text-align: center;
+    }
+}
+
+
+
+/* Form Alert */
+#formResult {
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+}
+#formResult.success { color: #28a745; }  /* Green */
+#formResult.error   { color: #dc3545; }  /* Red */
+#formResult.warning { color: #ffc107; }
 
 
 
