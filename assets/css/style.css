@@ -892,11 +892,6 @@ small,
 }
 
 /* Services Accordion */
-
-
-
-
-
 .title-bg{
     width: 100%;
     display: flex;
@@ -940,6 +935,7 @@ small,
 .service-details-paragraph {
     text-align: justify;
 }
+
 
 
 @media (max-width: 1200px) {
@@ -8188,14 +8184,123 @@ body.primary-header-crossed .primary-header {
 }
 
 /* Our Team */
-.team-container{
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+.team-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
 }
+
+.team-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.team-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 100px 0;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.team-title::before,
+.team-title::after {
+  content: "";
+  flex: 1;
+  height: 3px;
+  margin: 0 15px;
+  border-radius: 3px;
+  background: linear-gradient(to right, transparent, var(--bs-primary)); /* left line */
+}
+
+.team-title::after {
+  background: linear-gradient(to left, transparent, var(--bs-primary)); /* right line */
+}
+
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+  gap: 30px;
+}
+.member-card {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.member-card img {
+  width: 100%;
+  object-fit: contain;  
+  background: #000;     
+  display: block;      
+}
+
+.member-info {
+  width: 100%;        
+  padding: 15px;
+  background: var(--bs-card-bg);    
+}
+
+.member-info h3 {
+  margin: 8px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.member-info p {
+  font-size: 0.9rem;
+  color: var(--bs-primary-bg-subtle);
+}
+
+
+.founders {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.founder-card {
+  flex: 1 1 300px;
+  max-width: 350px;
+}
+
+.line-x {
+  background-color: #fff;
+  width: auto;
+  height: 1px;
+  margin-block: 60px;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* still 2 per row on very small */
+    gap: 15px;
+  }
+
+  .member-card {
+    padding-inline: 5px;
+  }}
 
 
 
