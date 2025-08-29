@@ -6686,7 +6686,7 @@ body.primary-header-crossed .primary-header {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+    color: var(--bs-primary-bg-subtle);
 }
 
 /* Mobile toggle button */
@@ -8599,21 +8599,28 @@ body.primary-header-crossed .primary-header {
 
     /* Project cards */
 .project-grid a{
+    
     cursor: pointer;
     text-decoration: none;
     color: var(--bs-light);
    
 }
 .project-item{
+    
       transition: opacity 0.5s ease-in-out;
 }
 /* Make sure images scale properly */
 .project-item img {
   width: 100%;
+  background:#a8a8a8;
   height: auto;
   border-radius: 5px; 
   display: block;
   transition: transform 0.5s ease;
+}
+
+.project-item img:hover {
+  transform: scale(1.025);
 }
 
 /* Add spacing below project title */
@@ -8634,7 +8641,20 @@ body.primary-header-crossed .primary-header {
     font-size: 0.8rem;
     padding-block: 0.5%;
     padding-inline: 2%;
+    color: #fff;
     border: 1px solid #00ffee;
+
+    /* Box shadow for contrast */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8),
+                 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.project-images img{
+    width: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+.project-images img:hover{
+    transform: scale(1.025);
 }
 
 @media (max-width:768px) {
@@ -8658,8 +8678,6 @@ body.primary-header-crossed .primary-header {
     left: 10%;
 }
 }
-
-/* Portfolio-Parallax Image */
 
 /* Image aligned left & vertically centered */
 .portfolio-section {
@@ -8735,6 +8753,15 @@ body.primary-header-crossed .primary-header {
   }
 }
 
+@media (max-width: 768px) {
+    .portfolio-section img {
+        left: 50%;
+    }
+  .portfolio-section h3 {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 576px) {
     .portfolio-section img {
         left: 50%;
@@ -8790,6 +8817,7 @@ body.primary-header-crossed .primary-header {
   margin-bottom: 15px;
   margin-left: 2%;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .info-col h4 {
@@ -8807,97 +8835,287 @@ body.primary-header-crossed .primary-header {
   }
 }
 
+ /* tt-Clipper */
 
-
-
-/* Pricing Section 1 */
-.pricing-section-1 {
-    background: linear-gradient(184deg, var(--bs-tertiary-bg) 0%, var(--bs-light-bg-subtle) 25.55%);
-}
-
-@media (min-width: 1200px) {
-    .pricing-section-1 {
-        position: relative;
-        z-index: 1;
+.tt-clipper {
+      position: relative;
+      width: 100%;
     }
-}
 
-@media (min-width: 1200px) {
-    .pricing-section-1::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: url(../img/shapes/about-2-shape.png);
-        background-size: cover;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        z-index: -1;
+    .tt-clipper-inner {
+      --_tt-clipper-radius: 15px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background:#1e1e1e;
+      /* starting state */
+      clip-path: inset(25% round 45px);
     }
-}
 
-/* Pricing Section 2 */
-.pricing-section-2 {
-    background-image: url(../img/shapes/hero-2-bg-shape.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    .tt-clipper-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .tt-clipper-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+
+    
+/* Next Project */
+   .next-project {
     position: relative;
-    isolation: isolate;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
 }
-
-.pricing-section-2::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    inset-inline: 0;
-    height: 12.5rem;
-    background-color: var(--bs-body-bg);
-    filter: blur(100px);
-    z-index: -1;
-    pointer-events: none;
+.next-project img {
+  z-index: 0;
 }
 
-.pricing-section-2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    inset-inline: 0;
-    height: 12.5rem;
-    background-color: var(--bs-body-bg);
-    filter: blur(100px);
-    z-index: -1;
-    pointer-events: none;
+.next-project .bg img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  min-height: 100%;
+  max-width: none;
+  object-fit: cover;
+  will-change: transform;
 }
 
-[data-bs-theme=dark] .pricing-section-2 {
-    background-image: url(../img/shapes/hero-2-bg-shape-dark.png);
+/* Overlay */
+.next-project::after {
+   content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
 
-/* Pricing Section 3 */
-.pricing-section-3 {
-    background-color: var(--bs-primary-text-emphasis);
+/* Inner container */
+.next-project-inner {
+  position: relative;   /* instead of absolute */
+  z-index: 2;
+  color: #fff;
+  font-size: 4rem;
+  text-align: center;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;         /* keeps it vertically centered */
 }
 
-.pricing-section-3::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 76.58%), var(--Color-Primary-Dark, #15063f);
+.title {
+  position: relative;
+  font-size: 3rem;
+  line-height: 1.2;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.pricing-section-3__inner-content {
-    background: linear-gradient(0deg, transparent 30%, var(--bs-primary-text-emphasis) 100%);
+.title-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
 }
 
-[data-bs-theme=dark] .pricing-section-3 {
-    background-color: var(--bs-primary-bg-subtle);
+.title-fill {
+  position: absolute;
+  top: 0; left: 0;
+  color: #fff;
+  white-space: nowrap;
+  width: 0;
+  overflow: hidden;
 }
 
-[data-bs-theme=dark] .pricing-section-3__inner-content {
-    background: linear-gradient(0deg, transparent 30%, var(--bs-primary-bg-subtle) 100%);
+/* Responsive */
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
 }
+@media (max-width: 576px) {
+  .title { font-size: 1.5rem; }
+}
+
+
+
+    .aboutus-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    /* About Section */
+    .aboutus-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+
+    .aboutus-image,
+    .aboutus-text {
+      flex: 0 0 48%; /* 50% width for both */
+      min-width: 300px;
+    }
+
+    .aboutus-image div {
+      width: 100%;
+      height: 50vh;
+      border-radius: 8px;
+    }
+
+    .aboutus-badge {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff;
+      background: #00ffee; /* neon accent */
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .aboutus-title {
+      margin: 10px 0;
+      font-size: 28px;
+      color: #ffffff;
+      text-transform: capitalize;
+    }
+
+    .aboutus-text p {
+      font-size: 15px;
+      color: #cccccc;
+      margin-bottom: 15px;
+    }
+
+    /* Mission Vision Section */
+    .missionvision-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .missionvision-text,
+    .missionvision-graphic {
+      flex: 0 0 48%; /* 50% width each */
+      min-width: 300px;
+    }
+
+    .missionvision-badge {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+      background: #00ffee;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .missionvision-subtitle {
+      font-size: 24px;
+      margin: 15px 0 10px;
+      color: #ffffff;
+    }
+
+    .missionvision-text p {
+      font-size: 15px;
+      color: #cccccc;
+      margin-bottom: 15px;
+    }
+
+    .missionvision-graphic {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Hexagon Graphic */
+    .hexagon-wrap {
+      position: relative;
+      width: 300px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hexagon-part {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      transform: rotate(45deg);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+
+    .hexagon-part span {
+      transform: rotate(-45deg);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .hexagon-our {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      background: #0077cc;
+    }
+
+    .hexagon-mission {
+      top: 0;
+      right: 0;
+      background: #ff9900;
+    }
+
+    .hexagon-vision {
+      bottom: 0;
+      right: 0;
+      background: #66bb33;
+    }
+
+    /* Responsive */
+    @media(max-width: 900px) {
+      .aboutus-section,
+      .missionvision-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .aboutus-image,
+      .aboutus-text,
+      .missionvision-text,
+      .missionvision-graphic {
+        flex: 0 0 100%;
+      }
+
+      .hexagon-wrap {
+        margin-top: 30px;
+      }
+    }
+
+
+
+
 
 /* Section Height */
 .section-height {
