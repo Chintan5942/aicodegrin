@@ -11342,4 +11342,23 @@ border-radius: 50px;
     .course-details-h3{
         text-align: center;
     }
+    .terms-and-condition h5{
+        text-align: center;
+    }
+    .terms-and-condition-h2{
+        text-align: center;
+    }
+    .title-mob{
+        height: 40vh;
+    }
+}
+
+@media (max-width:321px) {
+    .title-sml-mob{
+        height: 45vh;
+    }
+}
+
+.terms-and-condition p{
+    text-align: justify;
 }
