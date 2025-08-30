@@ -10761,7 +10761,7 @@ border-radius: 50px;
 
 /* Border Section */
 .border-primary-emphasis {
-    border-color: var(--bs-primary-text-emphasis) !important;
+    border-color: var(--bs-primary) !important;
 }
 
 .border-secondary-emphasis {

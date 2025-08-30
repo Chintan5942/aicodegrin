@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://new.codegrin.com/sitemap.xml
