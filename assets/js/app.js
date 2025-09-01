@@ -806,15 +806,19 @@ document.addEventListener("DOMContentLoaded", function () {
 // Preloader, Custom Cursor
 document.addEventListener("DOMContentLoaded", function () {
 
-  //Preloader 
-  var preloader = document.querySelector(".preloader");
-  window.addEventListener("load", function () {
-    if (preloader) {
+ // Preloader
+var preloader = document.querySelector(".preloader");
+window.addEventListener("load", function () {
+  if (preloader) {
+    setTimeout(function () {
+      preloader.classList.add("hidden"); // fade out
       setTimeout(function () {
-        preloader.style.display = "none";
-      }, 300);
-    }
-  });
+        preloader.style.display = "none"; // remove from flow
+      }, 500); // match transition duration
+    }, 300);
+  }
+});
+
 
 
   // Scroll
