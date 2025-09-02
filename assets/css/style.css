@@ -9026,6 +9026,11 @@ body.primary-header-crossed .primary-header {
 }
 
 /* Project cards */
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
 .project-grid a {
 
     cursor: pointer;
@@ -9106,6 +9111,7 @@ body.primary-header-crossed .primary-header {
     .project-item h5 {
         bottom: -13%;
         left: 10%;
+        font-size: 1rem;
     }
 
     .project-item h7 {

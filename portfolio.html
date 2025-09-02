@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     <link rel="icon" href="assets/img/favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
@@ -326,7 +327,8 @@
                     </a>
 
                     <a href="portfolio/varsha-foundation-mobile.html" class="col-md-6 col-lg-6 project-item mobile erp">
-                        <img src="assets/img/portfolio/varsha-foundation-mobile/header.png" alt="Varsha Foundation Mobile">
+                        <img src="assets/img/portfolio/varsha-foundation-mobile/header.png"
+                            alt="Varsha Foundation Mobile">
                         <h7>Mobile App</h7>
                         <h5>Varsha Foundation Mobile App</h5>
                     </a>
@@ -496,25 +498,26 @@
     <script src="assets/js/SplitText.min.js"></script>
     <script src="assets/js/ScrollSmoother.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script>
-        $(document).ready(function () {
-            var $grid = $('.project-grid').isotope({
-                itemSelector: '.project-item',
-                layoutMode: 'fitRows',
-                transitionDuration: '0.5s',
-                hiddenStyle: {
-                    transform: 'scale(0.8)'
-                },
-                visibleStyle: {
-                    transform: 'scale(1)'
-                }
-            })
-            $('input[name="filter"]').on('change', function () {
-                var filterValue = $(this).val();
-                $grid.isotope({ filter: filterValue });
-            });
-        });
-    </script>
+   <script>
+  $(document).ready(function () {
+    var $grid = $('.project-grid').isotope({
+      itemSelector: '.project-item',
+      layoutMode: 'masonry',
+      percentPosition: true
+    });
+
+    // Ensure layout fixes after images are loaded
+    $grid.imagesLoaded().progress(function () {
+      $grid.isotope('layout');
+    });
+
+    // Filtering
+    $('input[name="filter"]').on('change', function () {
+      var filterValue = $(this).val();
+      $grid.isotope({ filter: filterValue });
+    });
+  });
+</script>
 </body>
 
 </html>
