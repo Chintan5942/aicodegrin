@@ -7,12 +7,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="NextAi is a powerful SaaS, AI, and tech startup template designed for innovative businesses. Launch your digital products with a responsive, high-performance layout optimized for startups, software, and AI-based tech solutions. Perfect for showcasing apps, tech services, and advanced digital solutions with sleek design and robust functionality">
-    <meta name="keywords"
-        content="SaaS template, AI startup template, tech startup template, NextAi template, digital product template, software landing page, responsive tech template, SaaS website design, AI tech solutions, startup landing page, tech website template, SaaS UI design, SaaS and AI template, modern tech template">
-    <meta name="author" content="bplugins">
-    <title>Codegrin Technologies</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Portfolio - Web Development Projects | Codegrin Technologies</title>
+    <meta name="description" content="Explore our portfolio of successful web development projects including React.js, Next.js, Shopify, WordPress, and blockchain applications. See our work for clients worldwide.">
+    <meta name="keywords" content="web development portfolio, React projects, Next.js portfolio, Shopify development, WordPress projects, blockchain applications, mobile app portfolio, UI UX design portfolio">
+    <meta name="author" content="Codegrin Technologies">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.codegrin.com/portfolio.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio - Web Development Projects | Codegrin Technologies">
+    <meta property="og:description" content="Explore our portfolio of successful web development projects including React.js, Next.js, Shopify, and blockchain applications.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.codegrin.com/portfolio.html">
+    <meta property="og:image" content="https://www.codegrin.com/assets/img/logo-light.png">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
@@ -65,9 +75,9 @@
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <!-- Banner Section -->
-            <div class="container">
+            <header class="container">
                 <div class="title-bg">
-                    <nav class="mb-3">
+                    <nav class="mb-3" aria-label="Breadcrumb">
                         <ol class="breadcrumb breadcrumb-modifier">
                             <li class="breadcrumb-item">
                                 <a href="index.html" class="link fs-14">Home</a>
@@ -80,14 +90,20 @@
                             </li>
                         </ol>
                     </nav>
-                    <h2>Our Portfolio</h2>
+                    <h1>Our Development Portfolio</h1>
                 </div>
-            </div>
+            </header>
             <!-- Banner Section End -->
             <!-- Portfolio Section -->
-            <div class="container section-space-md-y">
+            <main class="container section-space-md-y">
+                <section aria-labelledby="portfolio-heading">
+                    <div class="text-center mb-5">
+                        <h2 id="portfolio-heading" class="display-6 fw-bold">Our Successful Projects</h2>
+                        <p class="lead">Showcasing our expertise across various technologies and industries</p>
+                    </div>
+                    
                 <!-- Filter Bar -->
-                <div class="filter-group">
+                <div class="filter-group" role="radiogroup" aria-label="Filter projects by technology">
                     <label class="filter-option animation-bt">
                         <input type="radio" name="filter" value="*" checked>
                         <span>All</span>
@@ -132,11 +148,27 @@
                 </div>
 
                 <!-- Project Grid -->
-                <div class="project-grid section-space-sm-y row project-grid g-5">
-                    <a href="portfolio/lumetiq.html" class="col-md-6 col-lg-6 project-item nextjs"><img
-                            src="assets/img/portfolio/lumetiq/header.png">
-                        <h7>Next.js</h7>
-                        <h5>Lumetiq</h5>
+                <div class="project-grid section-space-sm-y row g-5">
+                    <article class="col-md-6 col-lg-6 project-item nextjs">
+                        <a href="portfolio/lumetiq.html" aria-label="View Lumetiq project details">
+                            <img src="assets/img/portfolio/lumetiq/header.png" alt="Lumetiq - Next.js Web Development Project">
+                            <span class="project-tech">Next.js</span>
+                            <h3 class="project-title h5">Lumetiq Industries</h3>
+                        </a>
+                    </article>
+                    
+                    <article class="col-md-6 col-lg-6 project-item nextjs erp">
+                        <a href="portfolio/homiqly.html" aria-label="View Homiqly project details">
+                            <img src="assets/img/portfolio/homiqly/header.png" alt="Homiqly - Next.js ERP Development Project">
+                            <span class="project-tech">Next.js</span>
+                            <h3 class="project-title h5">Homiqly</h3>
+                        </a>
+                    </article>
+                    
+                    <!-- Continue with other projects... -->
+                </div>
+                </section>
+            </main>
                     </a>
                     <a href="portfolio/homiqly.html" class="col-md-6 col-lg-6 project-item nextjs erp"><img
                             src="assets/img/portfolio/homiqly/header.png">

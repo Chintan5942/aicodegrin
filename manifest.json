@@ -1,0 +1,20 @@
+{
+  "name": "Codegrin Technologies - Web Development Company",
+  "short_name": "Codegrin",
+  "description": "Leading web development company specializing in React, Node.js, blockchain, and mobile app development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#007bff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "technology", "productivity"],
+  "lang": "en",
+  "scope": "/"
+}
