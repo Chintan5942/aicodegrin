@@ -1,3 +1,19 @@
 User-agent: *
 Allow: /
-Sitemap: https://new.codegrin.com/sitemap.xml
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow important pages
+Allow: /assets/
+Allow: /services/
+Allow: /courses/
+Allow: /portfolio/
+
+# Sitemap location
+Sitemap: https://www.codegrin.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
