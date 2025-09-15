@@ -5723,7 +5723,7 @@ small,
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+}   
 
 .text-clip--primary-alt {
     background: -webkit-linear-gradient(0deg, var(--bs-white) 0%, var(--bs-primary) 100%);
@@ -8966,7 +8966,6 @@ body.primary-header-crossed .primary-header {
 
 
 /* Portfolio Section */
-
 /* Filter group layout - now flex wrap */
 .filter-group {
     display: flex;
@@ -8983,7 +8982,100 @@ body.primary-header-crossed .primary-header {
     margin-right: 10px;
 }
 
-/* Radio button wrapper */
+/* Button group styling to match filter-option design */
+#filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+#filterButtons .btn {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 8px 16px 8px 32px; /* Left padding for circle */
+    background: var(--bs-card-bg);
+    border: 1px solid var(--bs-border-color-translucent);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    transition: all 0.3s ease;
+    position: relative;
+    /* Ensure the entire button is clickable */
+    pointer-events: auto !important;
+    overflow: visible;
+    min-height: 40px; /* Ensure adequate click target size */
+}
+
+/* Circle indicator before text (like radio button) */
+#filterButtons .btn::before {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Ensure pseudo-element doesn't block clicks */
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Active button styling */
+#filterButtons .btn.active {
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    font-weight: bold;
+}
+
+#filterButtons .btn.active::before {
+    border-color: var(--bs-primary);
+    background: var(--bs-primary-bg-subtle);
+}
+
+/* Hover effects */
+#filterButtons .btn:hover:not(.active) {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+#filterButtons .btn:hover:not(.active)::before {
+    border-color: var(--bs-primary);
+}
+
+/* Focus state for accessibility */
+#filterButtons .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Ensure button text doesn't interfere with clicks */
+#filterButtons .btn * {
+    pointer-events: none;
+}
+
+/* Remove Bootstrap's default outline button styling that might interfere */
+#filterButtons .btn-outline-primary {
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-border-color: var(--bs-border-color-translucent);
+    --bs-btn-hover-color: var(--bs-primary);
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+    --bs-btn-active-color: var(--bs-primary);
+    --bs-btn-active-bg: var(--bs-primary-bg-subtle);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-active-shadow: none;
+}
+
+/* Legacy filter-option styles (can be removed if not used elsewhere) */
 .filter-option {
     display: inline-flex;
     align-items: center;
@@ -8995,8 +9087,6 @@ body.primary-header-crossed .primary-header {
     cursor: pointer;
     font-weight: 600;
     transition: background 0.3s ease;
-    white-space: nowrap;
-    /* keep text intact */
 }
 
 .filter-option input {

@@ -86,50 +86,33 @@
             <!-- Banner Section End -->
             <!-- Portfolio Section -->
             <div class="container section-space-md-y">
-                <!-- Filter Bar -->
-                <div class="filter-group">
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value="*" checked>
-                        <span>All</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".nextjs">
-                        <span>Next.js</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".react">
-                        <span>React.js</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".node">
-                        <span>Node.js</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".wordpress">
-                        <span>WordPress</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".shopify">
-                        <span>Shopify</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".blockchain">
-                        <span>Blockchain</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".mobile">
-                        <span>Mobile Apps</span>
-                    </label>
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".erp">
-                        <span>ERP/CRM</span>
-                    </label>
 
-                    <label class="filter-option animation-bt">
-                        <input type="radio" name="filter" value=".uiux">
-                        <span>UI/UX</span>
-                    </label>
+                <!-- Filter bar -->
+                <!-- Filter bar -->
+                <div class="btn-group flex-wrap gap-2" role="group" aria-label="Portfolio filters" id="filterButtons">
+                    <button type="button" class="btn btn-outline-primary active" data-filter="*"
+                        onclick="applyIsoFilter(this)" aria-pressed="true">All</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".nextjs"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">Next.js</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".react"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">React.js</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".node"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">Node.js</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".wordpress"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">WordPress</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".shopify"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">Shopify</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".blockchain"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">Blockchain</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".mobile"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">Mobile Apps</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".erp"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">ERP/CRM</button>
+                    <button type="button" class="btn btn-outline-primary" data-filter=".uiux"
+                        onclick="applyIsoFilter(this)" aria-pressed="false">UI/UX</button>
                 </div>
+
+
 
                 <!-- Project Grid -->
                 <div class="project-grid section-space-sm-y row project-grid g-5">
@@ -498,26 +481,49 @@
     <script src="assets/js/SplitText.min.js"></script>
     <script src="assets/js/ScrollSmoother.min.js"></script>
     <script src="assets/js/app.js"></script>
-   <script>
-  $(document).ready(function () {
-    var $grid = $('.project-grid').isotope({
-      itemSelector: '.project-item',
-      layoutMode: 'masonry',
-      percentPosition: true
-    });
+    <script>
+        // Keep grid reference global so onclick can use it
+        var isoGrid = null;
 
-    // Ensure layout fixes after images are loaded
-    $grid.imagesLoaded().progress(function () {
-      $grid.isotope('layout');
-    });
+        $(document).ready(function () {
+            // Initialize Isotope
+            var $grid = $('.project-grid').isotope({
+                itemSelector: '.project-item',
+                layoutMode: 'masonry',
+                percentPosition: true
+            });
 
-    // Filtering
-    $('input[name="filter"]').on('change', function () {
-      var filterValue = $(this).val();
-      $grid.isotope({ filter: filterValue });
-    });
-  });
-</script>
+            // Ensure layout fixes after images are loaded
+            $grid.imagesLoaded().progress(function () {
+                $grid.isotope('layout');
+            });
+
+            // Save grid reference for onclick function
+            isoGrid = $grid;
+        });
+
+        // Function called by onclick on each button
+        function applyIsoFilter(btn) {
+            if (!isoGrid) return;
+
+            var filterValue = btn.getAttribute('data-filter');
+
+            // Update active styling - remove active from all buttons
+            var buttons = document.querySelectorAll('#filterButtons button');
+            buttons.forEach(function (b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
+
+            // Add active to clicked button
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+
+            // Apply filter to Isotope
+            isoGrid.isotope({ filter: filterValue });
+        }
+    </script>
+
 </body>
 
 </html>
