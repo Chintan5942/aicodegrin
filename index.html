@@ -1121,7 +1121,6 @@
                         </div>
                     </div>
                 </div> -->
-
                 <!-- Client Review -->
                 <div class="section-space-sm-y">
                     <div class="container">
@@ -1807,8 +1806,55 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/theme.js"></script>
 </body>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17543647964"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-17543647964');
+</script>
+<script>
+// Replace with your Web3Forms access key
+const WEB3FORMS_KEY = "35780d11-4fa9-429b-a59a-ac6eebbe0e5c";
 
+// Function to detect redirect/referrer info
+function buildTrackingData() {
+  const referrer = document.referrer || "Direct/Unknown";
+  const params = Object.fromEntries(new URLSearchParams(window.location.search));
+  return {
+    access_key: WEB3FORMS_KEY,
+    subject: "Redirect Tracking",
+    from_name: "Tracking Script",
+    referrer: referrer,
+    url: window.location.href,
+    utm_source: params.utm_source || "",
+    utm_medium: params.utm_medium || "",
+    utm_campaign: params.utm_campaign || "",
+    timestamp: new Date().toISOString()
+  };
+}
+
+// Send data to Web3Forms
+async function sendTracking() {
+  const data = buildTrackingData();
+
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  const json = await res.json();
+  console.log("Web3Forms response:", json);
+}
+
+// Only trigger if there's a referrer or utm params
+if (document.referrer || window.location.search.includes("utm_")) {
+  sendTracking();
+}
+</script>
 
 
 </html>
