@@ -8518,9 +8518,10 @@ body.primary-header-crossed .primary-header {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
     gap: 30px;
 }
+
 
 .member-card {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
@@ -8568,7 +8569,7 @@ body.primary-header-crossed .primary-header {
 
 .founder-card {
     flex: 1 1 300px;
-    max-width: 350px;
+    max-width: 400px;
 }
 
 .line-x {
